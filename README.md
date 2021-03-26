@@ -25,19 +25,20 @@ mingw32-make && rendering.exe
 
 ```c++
 #include "tgaimage.h"
-constexpr int W = 500; // 图片宽
-constexpr int H = 500; // 图片高
-int main() {
+constexpr int W = 100; // 图片宽
+constexpr int H = 100; // 图片高
+int main()
+{
     TGAImage image(W, H, TGAImage::RGB); // 创建图片
-    for(int i=0;i<250;i++){
-        for(int j=0;j<250;j++){
+    for (int i = 0; i < W / 2; i++) {
+        for (int j = 0; j < H / 2; j++) {
             image.set(i, j, TGAColor(0, 255, 0)); // 绿
-            image.set(i+250, j, TGAColor(255, 0, 0)); // 红
-            image.set(i, j+250, TGAColor(0, 0, 0)); // 黑
-            image.set(i+250, j+250, TGAColor(0, 0, 255)); //蓝
+            image.set(i + W / 2, j, TGAColor(255, 0, 0)); // 红
+            image.set(i, j + H / 2, TGAColor(0, 0, 0)); // 黑
+            image.set(i + W / 2, j + H / 2, TGAColor(0, 0, 255)); //蓝
         }
     }
-    image.write_tga_file("output.tga"); //输出图片，格式为 tga
+    image.write_tga_file("output.tga");
     return 0;
 }
 ```
