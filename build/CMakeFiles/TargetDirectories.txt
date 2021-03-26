@@ -1,0 +1,3 @@
+D:/Work/CG/Self/softwareRendering/build/CMakeFiles/tinyrenderer.dir
+D:/Work/CG/Self/softwareRendering/build/CMakeFiles/edit_cache.dir
+D:/Work/CG/Self/softwareRendering/build/CMakeFiles/rebuild_cache.dir

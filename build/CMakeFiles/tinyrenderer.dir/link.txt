@@ -1,0 +1,3 @@
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\tinyrenderer.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\tinyrenderer.dir/objects.a @CMakeFiles\tinyrenderer.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -O3 -fopenmp -Wl,--whole-archive CMakeFiles\tinyrenderer.dir/objects.a -Wl,--no-whole-archive -o tinyrenderer.exe -Wl,--out-implib,libtinyrenderer.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\tinyrenderer.dir\linklibs.rsp

@@ -1,0 +1,1231 @@
+The system is: Windows - 10.0.18363 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/Language/MinGW/bin/gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "D:/Work/CG/Self/softwareRendering/build/CMakeFiles/3.18.4/CompilerIdC/a.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: D:/Language/MinGW/bin/g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is GNU, found in "D:/Work/CG/Self/softwareRendering/build/CMakeFiles/3.18.4/CompilerIdCXX/a.exe"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_96dd6/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_96dd6.dir\build.make CMakeFiles/cmTC_96dd6.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_96dd6.dir/CMakeCCompilerABI.c.obj
+D:\Language\MinGW\bin\gcc.exe   -v -o CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj -c D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=D:\Language\MinGW\bin\gcc.exe
+Target: mingw32
+Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c,c++,objc,obj-c++,fortran,ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings
+Thread model: win32
+gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=i586'
+ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/cc1.exe -quiet -v -iprefix d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/ D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=i586 -auxbase-strip CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj -version -o D:\Win\AppData\Local\Temp\cc6WhMOa.s
+GNU C17 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)
+	compiled by GNU C version 8.2.0, GMP version 6.1.2, MPFR version 3.1.5, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include"
+ignoring nonexistent directory "/mingw/include"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../include"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include-fixed"
+ignoring nonexistent directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"
+ignoring nonexistent directory "/mingw/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed
+End of search list.
+GNU C17 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)
+	compiled by GNU C version 8.2.0, GMP version 6.1.2, MPFR version 3.1.5, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 88d50f904797cac3fc341345a9dc4ec1
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=i586'
+ d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/as.exe -v -o CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj D:\Win\AppData\Local\Temp\cc6WhMOa.s
+GNU assembler version 2.32 (mingw32) using BFD version (GNU Binutils) 2.32
+COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../libexec/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/
+LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../lib/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=i586'
+Linking C executable cmTC_96dd6.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_96dd6.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_96dd6.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_96dd6.dir/objects.a @CMakeFiles\cmTC_96dd6.dir\objects1.rsp
+D:\Language\MinGW\bin\gcc.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_96dd6.dir/objects.a -Wl,--no-whole-archive -o cmTC_96dd6.exe -Wl,--out-implib,libcmTC_96dd6.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Using built-in specs.
+COLLECT_GCC=D:\Language\MinGW\bin\gcc.exe
+COLLECT_LTO_WRAPPER=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe
+Target: mingw32
+Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c,c++,objc,obj-c++,fortran,ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings
+Thread model: win32
+gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) 
+COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../libexec/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/
+LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../lib/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_96dd6.exe' '-mtune=generic' '-march=i586'
+ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/collect2.exe -plugin d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/liblto_plugin-0.dll -plugin-opt=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe -plugin-opt=-fresolution=D:\Win\AppData\Local\Temp\cc6Oefin.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -Bdynamic -o cmTC_96dd6.exe d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../crt2.o d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtbegin.o -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0 -Ld:/language/mingw/bin/../lib/gcc -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../.. --whole-archive CMakeFiles\cmTC_96dd6.dir/objects.a --no-whole-archive --out-implib libcmTC_96dd6.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_96dd6.exe' '-mtune=generic' '-march=i586'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../include]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include-fixed]
+  end of search list found
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../include] ==> [D:/Language/MinGW/include]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include-fixed] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include-fixed]
+  implicit include dirs: [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include;D:/Language/MinGW/include;D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include-fixed]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_96dd6/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_96dd6.dir\build.make CMakeFiles/cmTC_96dd6.dir/build]
+  ignore line: [mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_96dd6.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [D:\Language\MinGW\bin\gcc.exe   -v -o CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj -c D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=D:\Language\MinGW\bin\gcc.exe]
+  ignore line: [Target: mingw32]
+  ignore line: [Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c c++ objc obj-c++ fortran ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings]
+  ignore line: [Thread model: win32]
+  ignore line: [gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=i586']
+  ignore line: [ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/cc1.exe -quiet -v -iprefix d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/ D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=i586 -auxbase-strip CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj -version -o D:\Win\AppData\Local\Temp\cc6WhMOa.s]
+  ignore line: [GNU C17 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)]
+  ignore line: [	compiled by GNU C version 8.2.0  GMP version 6.1.2  MPFR version 3.1.5  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include"]
+  ignore line: [ignoring nonexistent directory "/mingw/include"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../include"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include-fixed"]
+  ignore line: [ignoring nonexistent directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"]
+  ignore line: [ignoring nonexistent directory "/mingw/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)]
+  ignore line: [	compiled by GNU C version 8.2.0  GMP version 6.1.2  MPFR version 3.1.5  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 88d50f904797cac3fc341345a9dc4ec1]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=i586']
+  ignore line: [ d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/as.exe -v -o CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj D:\Win\AppData\Local\Temp\cc6WhMOa.s]
+  ignore line: [GNU assembler version 2.32 (mingw32) using BFD version (GNU Binutils) 2.32]
+  ignore line: [COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../libexec/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/]
+  ignore line: [LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_96dd6.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=i586']
+  ignore line: [Linking C executable cmTC_96dd6.exe]
+  ignore line: [D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_96dd6.dir\link.txt --verbose=1]
+  ignore line: [D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_96dd6.dir/objects.a]
+  ignore line: [D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_96dd6.dir/objects.a @CMakeFiles\cmTC_96dd6.dir\objects1.rsp]
+  ignore line: [D:\Language\MinGW\bin\gcc.exe  -v -Wl --whole-archive CMakeFiles\cmTC_96dd6.dir/objects.a -Wl --no-whole-archive -o cmTC_96dd6.exe -Wl --out-implib libcmTC_96dd6.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=D:\Language\MinGW\bin\gcc.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe]
+  ignore line: [Target: mingw32]
+  ignore line: [Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c c++ objc obj-c++ fortran ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings]
+  ignore line: [Thread model: win32]
+  ignore line: [gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) ]
+  ignore line: [COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../libexec/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/]
+  ignore line: [LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_96dd6.exe' '-mtune=generic' '-march=i586']
+  link line: [ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/collect2.exe -plugin d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/liblto_plugin-0.dll -plugin-opt=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe -plugin-opt=-fresolution=D:\Win\AppData\Local\Temp\cc6Oefin.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -Bdynamic -o cmTC_96dd6.exe d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../crt2.o d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtbegin.o -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0 -Ld:/language/mingw/bin/../lib/gcc -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../.. --whole-archive CMakeFiles\cmTC_96dd6.dir/objects.a --no-whole-archive --out-implib libcmTC_96dd6.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtend.o]
+    arg [d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/collect2.exe] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/liblto_plugin-0.dll] ==> ignore
+    arg [-plugin-opt=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe] ==> ignore
+    arg [-plugin-opt=-fresolution=D:\Win\AppData\Local\Temp\cc6Oefin.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+    arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-Bdynamic] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_96dd6.exe] ==> ignore
+    arg [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../crt2.o] ==> ignore
+    arg [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtbegin.o] ==> ignore
+    arg [-Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0] ==> dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0]
+    arg [-Ld:/language/mingw/bin/../lib/gcc] ==> dir [d:/language/mingw/bin/../lib/gcc]
+    arg [-Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib] ==> dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib]
+    arg [-Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../..] ==> dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../..]
+    arg [--whole-archive] ==> ignore
+    arg [CMakeFiles\cmTC_96dd6.dir/objects.a] ==> ignore
+    arg [--no-whole-archive] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_96dd6.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc_eh] ==> lib [gcc_eh]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc_eh] ==> lib [gcc_eh]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtend.o] ==> ignore
+  remove lib [gcc_eh]
+  remove lib [msvcrt]
+  remove lib [gcc_eh]
+  remove lib [msvcrt]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc] ==> [D:/Language/MinGW/lib/gcc]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib] ==> [D:/Language/MinGW/mingw32/lib]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../..] ==> [D:/Language/MinGW/lib]
+  implicit libs: [mingw32;gcc;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;gcc;moldname;mingwex]
+  implicit dirs: [D:/Language/MinGW/lib/gcc/mingw32/8.2.0;D:/Language/MinGW/lib/gcc;D:/Language/MinGW/mingw32/lib;D:/Language/MinGW/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_0d048/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_0d048.dir\build.make CMakeFiles/cmTC_0d048.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0d048.dir/CMakeCXXCompilerABI.cpp.obj
+D:\Language\MinGW\bin\g++.exe   -v -o CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj -c D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=D:\Language\MinGW\bin\g++.exe
+Target: mingw32
+Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c,c++,objc,obj-c++,fortran,ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings
+Thread model: win32
+gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=i586'
+ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/cc1plus.exe -quiet -v -iprefix d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/ D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=i586 -auxbase-strip CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj -version -o D:\Win\AppData\Local\Temp\cckeKPyJ.s
+GNU C++14 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)
+	compiled by GNU C version 8.2.0, GMP version 6.1.2, MPFR version 3.1.5, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include/c++"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include/c++/mingw32"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include/c++/backward"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include"
+ignoring nonexistent directory "/mingw/include"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../include"
+ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include-fixed"
+ignoring nonexistent directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"
+ignoring nonexistent directory "/mingw/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include
+ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed
+End of search list.
+GNU C++14 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)
+	compiled by GNU C version 8.2.0, GMP version 6.1.2, MPFR version 3.1.5, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 1aab1d81d4f13e2c95d138c5bfb5463a
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=i586'
+ d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/as.exe -v -o CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj D:\Win\AppData\Local\Temp\cckeKPyJ.s
+GNU assembler version 2.32 (mingw32) using BFD version (GNU Binutils) 2.32
+COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../libexec/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/
+LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../lib/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=i586'
+Linking CXX executable cmTC_0d048.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0d048.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_0d048.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_0d048.dir/objects.a @CMakeFiles\cmTC_0d048.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_0d048.dir/objects.a -Wl,--no-whole-archive -o cmTC_0d048.exe -Wl,--out-implib,libcmTC_0d048.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Using built-in specs.
+COLLECT_GCC=D:\Language\MinGW\bin\g++.exe
+COLLECT_LTO_WRAPPER=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe
+Target: mingw32
+Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c,c++,objc,obj-c++,fortran,ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings
+Thread model: win32
+gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) 
+COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../libexec/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/
+LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/;d:/language/mingw/bin/../lib/gcc/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/;d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0d048.exe' '-shared-libgcc' '-mtune=generic' '-march=i586'
+ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/collect2.exe -plugin d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/liblto_plugin-0.dll -plugin-opt=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe -plugin-opt=-fresolution=D:\Win\AppData\Local\Temp\ccQszQsW.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -Bdynamic -u ___register_frame_info -u ___deregister_frame_info -o cmTC_0d048.exe d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../crt2.o d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtbegin.o -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0 -Ld:/language/mingw/bin/../lib/gcc -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../.. --whole-archive CMakeFiles\cmTC_0d048.dir/objects.a --no-whole-archive --out-implib libcmTC_0d048.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0d048.exe' '-shared-libgcc' '-mtune=generic' '-march=i586'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include/c++]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include/c++/mingw32]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include/c++/backward]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../include]
+    add: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include-fixed]
+  end of search list found
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include/c++] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include/c++]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include/c++/mingw32] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include/c++/mingw32]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include/c++/backward] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include/c++/backward]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../include] ==> [D:/Language/MinGW/include]
+  collapse include dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/include-fixed] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include-fixed]
+  implicit include dirs: [D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include/c++;D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include/c++/mingw32;D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include/c++/backward;D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include;D:/Language/MinGW/include;D:/Language/MinGW/lib/gcc/mingw32/8.2.0/include-fixed]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_0d048/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_0d048.dir\build.make CMakeFiles/cmTC_0d048.dir/build]
+  ignore line: [mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_0d048.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [D:\Language\MinGW\bin\g++.exe   -v -o CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj -c D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=D:\Language\MinGW\bin\g++.exe]
+  ignore line: [Target: mingw32]
+  ignore line: [Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c c++ objc obj-c++ fortran ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings]
+  ignore line: [Thread model: win32]
+  ignore line: [gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=i586']
+  ignore line: [ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/cc1plus.exe -quiet -v -iprefix d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/ D:\Tools\CMake\share\cmake-3.18\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=i586 -auxbase-strip CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj -version -o D:\Win\AppData\Local\Temp\cckeKPyJ.s]
+  ignore line: [GNU C++14 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)]
+  ignore line: [	compiled by GNU C version 8.2.0  GMP version 6.1.2  MPFR version 3.1.5  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include/c++"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include/c++/mingw32"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include/c++/backward"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include"]
+  ignore line: [ignoring nonexistent directory "/mingw/include"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../include"]
+  ignore line: [ignoring duplicate directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/include-fixed"]
+  ignore line: [ignoring nonexistent directory "d:/language/mingw/lib/gcc/../../lib/gcc/mingw32/8.2.0/../../../../mingw32/include"]
+  ignore line: [ignoring nonexistent directory "/mingw/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include]
+  ignore line: [ d:\language\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++14 (MinGW.org GCC-8.2.0-5) version 8.2.0 (mingw32)]
+  ignore line: [	compiled by GNU C version 8.2.0  GMP version 6.1.2  MPFR version 3.1.5  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 1aab1d81d4f13e2c95d138c5bfb5463a]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=i586']
+  ignore line: [ d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/as.exe -v -o CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj D:\Win\AppData\Local\Temp\cckeKPyJ.s]
+  ignore line: [GNU assembler version 2.32 (mingw32) using BFD version (GNU Binutils) 2.32]
+  ignore line: [COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../libexec/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/]
+  ignore line: [LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0d048.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=i586']
+  ignore line: [Linking CXX executable cmTC_0d048.exe]
+  ignore line: [D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0d048.dir\link.txt --verbose=1]
+  ignore line: [D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_0d048.dir/objects.a]
+  ignore line: [D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_0d048.dir/objects.a @CMakeFiles\cmTC_0d048.dir\objects1.rsp]
+  ignore line: [D:\Language\MinGW\bin\g++.exe  -v -Wl --whole-archive CMakeFiles\cmTC_0d048.dir/objects.a -Wl --no-whole-archive -o cmTC_0d048.exe -Wl --out-implib libcmTC_0d048.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=D:\Language\MinGW\bin\g++.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe]
+  ignore line: [Target: mingw32]
+  ignore line: [Configured with: ../src/gcc-8.2.0/configure --build=x86_64-pc-linux-gnu --host=mingw32 --target=mingw32 --prefix=/mingw --disable-win32-registry --with-arch=i586 --with-tune=generic --enable-languages=c c++ objc obj-c++ fortran ada --with-pkgversion='MinGW.org GCC-8.2.0-5' --with-gmp=/mingw --with-mpfr=/mingw --with-mpc=/mingw --enable-static --enable-shared --enable-threads --with-dwarf2 --disable-sjlj-exceptions --enable-version-specific-runtime-libs --with-libiconv-prefix=/mingw --with-libintl-prefix=/mingw --enable-libstdcxx-debug --with-isl=/mingw --enable-libgomp --disable-libvtv --enable-nls --disable-build-format-warnings]
+  ignore line: [Thread model: win32]
+  ignore line: [gcc version 8.2.0 (MinGW.org GCC-8.2.0-5) ]
+  ignore line: [COMPILER_PATH=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../libexec/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/bin/]
+  ignore line: [LIBRARY_PATH=d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib/]
+  ignore line: [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0d048.exe' '-shared-libgcc' '-mtune=generic' '-march=i586']
+  link line: [ d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/collect2.exe -plugin d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/liblto_plugin-0.dll -plugin-opt=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe -plugin-opt=-fresolution=D:\Win\AppData\Local\Temp\ccQszQsW.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -Bdynamic -u ___register_frame_info -u ___deregister_frame_info -o cmTC_0d048.exe d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../crt2.o d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtbegin.o -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0 -Ld:/language/mingw/bin/../lib/gcc -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib -Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../.. --whole-archive CMakeFiles\cmTC_0d048.dir/objects.a --no-whole-archive --out-implib libcmTC_0d048.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtend.o]
+    arg [d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/collect2.exe] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/liblto_plugin-0.dll] ==> ignore
+    arg [-plugin-opt=d:/language/mingw/bin/../libexec/gcc/mingw32/8.2.0/lto-wrapper.exe] ==> ignore
+    arg [-plugin-opt=-fresolution=D:\Win\AppData\Local\Temp\ccQszQsW.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+    arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-Bdynamic] ==> ignore
+    arg [-u] ==> ignore
+    arg [___register_frame_info] ==> ignore
+    arg [-u] ==> ignore
+    arg [___deregister_frame_info] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_0d048.exe] ==> ignore
+    arg [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../crt2.o] ==> ignore
+    arg [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtbegin.o] ==> ignore
+    arg [-Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0] ==> dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0]
+    arg [-Ld:/language/mingw/bin/../lib/gcc] ==> dir [d:/language/mingw/bin/../lib/gcc]
+    arg [-Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib] ==> dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib]
+    arg [-Ld:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../..] ==> dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../..]
+    arg [--whole-archive] ==> ignore
+    arg [CMakeFiles\cmTC_0d048.dir/objects.a] ==> ignore
+    arg [--no-whole-archive] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_0d048.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/crtend.o] ==> ignore
+  remove lib [msvcrt]
+  remove lib [msvcrt]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0] ==> [D:/Language/MinGW/lib/gcc/mingw32/8.2.0]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc] ==> [D:/Language/MinGW/lib/gcc]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../../../mingw32/lib] ==> [D:/Language/MinGW/mingw32/lib]
+  collapse library dir [d:/language/mingw/bin/../lib/gcc/mingw32/8.2.0/../../..] ==> [D:/Language/MinGW/lib]
+  implicit libs: [stdc++;mingw32;gcc_s;gcc;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;gcc_s;gcc;moldname;mingwex]
+  implicit dirs: [D:/Language/MinGW/lib/gcc/mingw32/8.2.0;D:/Language/MinGW/lib/gcc;D:/Language/MinGW/mingw32/lib;D:/Language/MinGW/lib]
+  implicit fwks: []
+
+
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_1ec19/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_1ec19.dir\build.make CMakeFiles/cmTC_1ec19.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1ec19.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_1ec19.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_1ec19.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_1ec19.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_1ec19.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_1ec19.dir/objects.a @CMakeFiles\cmTC_1ec19.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_1ec19.dir/objects.a -Wl,--no-whole-archive -o cmTC_1ec19.exe -Wl,--out-implib,libcmTC_1ec19.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_1ec19.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_8fee6/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_8fee6.dir\build.make CMakeFiles/cmTC_8fee6.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8fee6.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_8fee6.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_8fee6.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_8fee6.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_8fee6.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_8fee6.dir/objects.a @CMakeFiles\cmTC_8fee6.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_8fee6.dir/objects.a -Wl,--no-whole-archive -o cmTC_8fee6.exe -Wl,--out-implib,libcmTC_8fee6.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_8fee6.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_a979b/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_a979b.dir\build.make CMakeFiles/cmTC_a979b.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a979b.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_a979b.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_a979b.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a979b.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_a979b.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_a979b.dir/objects.a @CMakeFiles\cmTC_a979b.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_a979b.dir/objects.a -Wl,--no-whole-archive -o cmTC_a979b.exe -Wl,--out-implib,libcmTC_a979b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_a979b.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_9e68b/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_9e68b.dir\build.make CMakeFiles/cmTC_9e68b.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9e68b.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_9e68b.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_9e68b.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_9e68b.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_9e68b.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_9e68b.dir/objects.a @CMakeFiles\cmTC_9e68b.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_9e68b.dir/objects.a -Wl,--no-whole-archive -o cmTC_9e68b.exe -Wl,--out-implib,libcmTC_9e68b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_9e68b.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_a81af/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_a81af.dir\build.make CMakeFiles/cmTC_a81af.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a81af.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_a81af.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_a81af.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a81af.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_a81af.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_a81af.dir/objects.a @CMakeFiles\cmTC_a81af.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_a81af.dir/objects.a -Wl,--no-whole-archive -o cmTC_a81af.exe -Wl,--out-implib,libcmTC_a81af.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_a81af.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_d29c3/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d29c3.dir\build.make CMakeFiles/cmTC_d29c3.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d29c3.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -O3 -Dflag_supported   -fopenmp -o CMakeFiles\cmTC_d29c3.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_d29c3.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_d29c3.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_d29c3.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_d29c3.dir/objects.a @CMakeFiles\cmTC_d29c3.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -O3 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_d29c3.dir/objects.a -Wl,--no-whole-archive -o cmTC_d29c3.exe -Wl,--out-implib,libcmTC_d29c3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_d29c3.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_65335/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_65335.dir\build.make CMakeFiles/cmTC_65335.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_65335.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_65335.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_65335.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_65335.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_65335.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_65335.dir/objects.a @CMakeFiles\cmTC_65335.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_65335.dir/objects.a -Wl,--no-whole-archive -o cmTC_65335.exe -Wl,--out-implib,libcmTC_65335.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_65335.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_e4603/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_e4603.dir\build.make CMakeFiles/cmTC_e4603.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e4603.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_e4603.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_e4603.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_e4603.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_e4603.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_e4603.dir/objects.a @CMakeFiles\cmTC_e4603.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_e4603.dir/objects.a -Wl,--no-whole-archive -o cmTC_e4603.exe -Wl,--out-implib,libcmTC_e4603.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_e4603.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_5b452/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_5b452.dir\build.make CMakeFiles/cmTC_5b452.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5b452.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_5b452.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_5b452.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_5b452.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_5b452.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_5b452.dir/objects.a @CMakeFiles\cmTC_5b452.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_5b452.dir/objects.a -Wl,--no-whole-archive -o cmTC_5b452.exe -Wl,--out-implib,libcmTC_5b452.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_5b452.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_d5deb/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d5deb.dir\build.make CMakeFiles/cmTC_d5deb.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d5deb.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_d5deb.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_d5deb.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_d5deb.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_d5deb.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_d5deb.dir/objects.a @CMakeFiles\cmTC_d5deb.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_d5deb.dir/objects.a -Wl,--no-whole-archive -o cmTC_d5deb.exe -Wl,--out-implib,libcmTC_d5deb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_d5deb.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_da120/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_da120.dir\build.make CMakeFiles/cmTC_da120.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_da120.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_da120.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_da120.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_da120.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_da120.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_da120.dir/objects.a @CMakeFiles\cmTC_da120.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_da120.dir/objects.a -Wl,--no-whole-archive -o cmTC_da120.exe -Wl,--out-implib,libcmTC_da120.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_da120.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_eef24/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_eef24.dir\build.make CMakeFiles/cmTC_eef24.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_eef24.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_eef24.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_eef24.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_eef24.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_eef24.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_eef24.dir/objects.a @CMakeFiles\cmTC_eef24.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_eef24.dir/objects.a -Wl,--no-whole-archive -o cmTC_eef24.exe -Wl,--out-implib,libcmTC_eef24.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_eef24.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_f50ea/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_f50ea.dir\build.make CMakeFiles/cmTC_f50ea.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f50ea.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_f50ea.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_f50ea.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_f50ea.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_f50ea.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_f50ea.dir/objects.a @CMakeFiles\cmTC_f50ea.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_f50ea.dir/objects.a -Wl,--no-whole-archive -o cmTC_f50ea.exe -Wl,--out-implib,libcmTC_f50ea.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_f50ea.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_54dc2/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_54dc2.dir\build.make CMakeFiles/cmTC_54dc2.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_54dc2.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_54dc2.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_54dc2.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_54dc2.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_54dc2.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_54dc2.dir/objects.a @CMakeFiles\cmTC_54dc2.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_54dc2.dir/objects.a -Wl,--no-whole-archive -o cmTC_54dc2.exe -Wl,--out-implib,libcmTC_54dc2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_54dc2.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_44a4b/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_44a4b.dir\build.make CMakeFiles/cmTC_44a4b.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_44a4b.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_44a4b.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_44a4b.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_44a4b.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_44a4b.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_44a4b.dir/objects.a @CMakeFiles\cmTC_44a4b.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_44a4b.dir/objects.a -Wl,--no-whole-archive -o cmTC_44a4b.exe -Wl,--out-implib,libcmTC_44a4b.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_44a4b.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_80ee1/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_80ee1.dir\build.make CMakeFiles/cmTC_80ee1.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_80ee1.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_80ee1.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_80ee1.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_80ee1.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_80ee1.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_80ee1.dir/objects.a @CMakeFiles\cmTC_80ee1.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_80ee1.dir/objects.a -Wl,--no-whole-archive -o cmTC_80ee1.exe -Wl,--out-implib,libcmTC_80ee1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_80ee1.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_d539c/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d539c.dir\build.make CMakeFiles/cmTC_d539c.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_d539c.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_d539c.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_d539c.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_d539c.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_d539c.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_d539c.dir/objects.a @CMakeFiles\cmTC_d539c.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_d539c.dir/objects.a -Wl,--no-whole-archive -o cmTC_d539c.exe -Wl,--out-implib,libcmTC_d539c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_d539c.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_a9d27/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_a9d27.dir\build.make CMakeFiles/cmTC_a9d27.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a9d27.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_a9d27.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_a9d27.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a9d27.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_a9d27.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_a9d27.dir/objects.a @CMakeFiles\cmTC_a9d27.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_a9d27.dir/objects.a -Wl,--no-whole-archive -o cmTC_a9d27.exe -Wl,--out-implib,libcmTC_a9d27.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_a9d27.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_5dc29/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_5dc29.dir\build.make CMakeFiles/cmTC_5dc29.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5dc29.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_5dc29.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_5dc29.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_5dc29.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_5dc29.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_5dc29.dir/objects.a @CMakeFiles\cmTC_5dc29.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_5dc29.dir/objects.a -Wl,--no-whole-archive -o cmTC_5dc29.exe -Wl,--out-implib,libcmTC_5dc29.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_5dc29.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_84cd9/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_84cd9.dir\build.make CMakeFiles/cmTC_84cd9.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_84cd9.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_84cd9.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_84cd9.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_84cd9.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_84cd9.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_84cd9.dir/objects.a @CMakeFiles\cmTC_84cd9.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_84cd9.dir/objects.a -Wl,--no-whole-archive -o cmTC_84cd9.exe -Wl,--out-implib,libcmTC_84cd9.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_84cd9.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_2a308/fast && mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_2a308.dir\build.make CMakeFiles/cmTC_2a308.dir/build
+mingw32-make.exe[2]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2a308.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_2a308.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_2a308.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_2a308.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_2a308.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_2a308.dir/objects.a @CMakeFiles\cmTC_2a308.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_2a308.dir/objects.a -Wl,--no-whole-archive -o cmTC_2a308.exe -Wl,--out-implib,libcmTC_2a308.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_2a308.dir\linklibs.rsp
+mingw32-make.exe[2]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_fb852/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_fb852.dir\build.make CMakeFiles/cmTC_fb852.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_fb852.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_fb852.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_fb852.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_fb852.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_fb852.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_fb852.dir/objects.a @CMakeFiles\cmTC_fb852.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_fb852.dir/objects.a -Wl,--no-whole-archive -o cmTC_fb852.exe -Wl,--out-implib,libcmTC_fb852.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_fb852.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_38a2a/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_38a2a.dir\build.make CMakeFiles/cmTC_38a2a.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_38a2a.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_38a2a.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_38a2a.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_38a2a.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_38a2a.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_38a2a.dir/objects.a @CMakeFiles\cmTC_38a2a.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_38a2a.dir/objects.a -Wl,--no-whole-archive -o cmTC_38a2a.exe -Wl,--out-implib,libcmTC_38a2a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_38a2a.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_f09bd/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_f09bd.dir\build.make CMakeFiles/cmTC_f09bd.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f09bd.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_f09bd.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_f09bd.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_f09bd.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_f09bd.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_f09bd.dir/objects.a @CMakeFiles\cmTC_f09bd.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_f09bd.dir/objects.a -Wl,--no-whole-archive -o cmTC_f09bd.exe -Wl,--out-implib,libcmTC_f09bd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_f09bd.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_4b6dc/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_4b6dc.dir\build.make CMakeFiles/cmTC_4b6dc.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4b6dc.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_4b6dc.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_4b6dc.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_4b6dc.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_4b6dc.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_4b6dc.dir/objects.a @CMakeFiles\cmTC_4b6dc.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_4b6dc.dir/objects.a -Wl,--no-whole-archive -o cmTC_4b6dc.exe -Wl,--out-implib,libcmTC_4b6dc.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_4b6dc.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_9dad2/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_9dad2.dir\build.make CMakeFiles/cmTC_9dad2.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9dad2.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_9dad2.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_9dad2.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_9dad2.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_9dad2.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_9dad2.dir/objects.a @CMakeFiles\cmTC_9dad2.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_9dad2.dir/objects.a -Wl,--no-whole-archive -o cmTC_9dad2.exe -Wl,--out-implib,libcmTC_9dad2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_9dad2.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_178bb/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_178bb.dir\build.make CMakeFiles/cmTC_178bb.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_178bb.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_178bb.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_178bb.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_178bb.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_178bb.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_178bb.dir/objects.a @CMakeFiles\cmTC_178bb.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_178bb.dir/objects.a -Wl,--no-whole-archive -o cmTC_178bb.exe -Wl,--out-implib,libcmTC_178bb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_178bb.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_32576/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_32576.dir\build.make CMakeFiles/cmTC_32576.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_32576.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_32576.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_32576.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_32576.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_32576.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_32576.dir/objects.a @CMakeFiles\cmTC_32576.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_32576.dir/objects.a -Wl,--no-whole-archive -o cmTC_32576.exe -Wl,--out-implib,libcmTC_32576.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_32576.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_6023d/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_6023d.dir\build.make CMakeFiles/cmTC_6023d.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6023d.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_6023d.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_6023d.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_6023d.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_6023d.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_6023d.dir/objects.a @CMakeFiles\cmTC_6023d.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_6023d.dir/objects.a -Wl,--no-whole-archive -o cmTC_6023d.exe -Wl,--out-implib,libcmTC_6023d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_6023d.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_2993c/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_2993c.dir\build.make CMakeFiles/cmTC_2993c.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2993c.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_2993c.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_2993c.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_2993c.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_2993c.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_2993c.dir/objects.a @CMakeFiles\cmTC_2993c.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_2993c.dir/objects.a -Wl,--no-whole-archive -o cmTC_2993c.exe -Wl,--out-implib,libcmTC_2993c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_2993c.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_b67e6/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_b67e6.dir\build.make CMakeFiles/cmTC_b67e6.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b67e6.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_b67e6.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_b67e6.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_b67e6.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_b67e6.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_b67e6.dir/objects.a @CMakeFiles\cmTC_b67e6.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_b67e6.dir/objects.a -Wl,--no-whole-archive -o cmTC_b67e6.exe -Wl,--out-implib,libcmTC_b67e6.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_b67e6.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_97f62/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_97f62.dir\build.make CMakeFiles/cmTC_97f62.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_97f62.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_97f62.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_97f62.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_97f62.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_97f62.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_97f62.dir/objects.a @CMakeFiles\cmTC_97f62.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_97f62.dir/objects.a -Wl,--no-whole-archive -o cmTC_97f62.exe -Wl,--out-implib,libcmTC_97f62.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_97f62.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_0422f/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_0422f.dir\build.make CMakeFiles/cmTC_0422f.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0422f.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_0422f.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_0422f.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0422f.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_0422f.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_0422f.dir/objects.a @CMakeFiles\cmTC_0422f.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_0422f.dir/objects.a -Wl,--no-whole-archive -o cmTC_0422f.exe -Wl,--out-implib,libcmTC_0422f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_0422f.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_24b1a/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_24b1a.dir\build.make CMakeFiles/cmTC_24b1a.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_24b1a.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_24b1a.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_24b1a.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_24b1a.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_24b1a.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_24b1a.dir/objects.a @CMakeFiles\cmTC_24b1a.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_24b1a.dir/objects.a -Wl,--no-whole-archive -o cmTC_24b1a.exe -Wl,--out-implib,libcmTC_24b1a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_24b1a.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_ca6db/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ca6db.dir\build.make CMakeFiles/cmTC_ca6db.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ca6db.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_ca6db.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_ca6db.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_ca6db.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_ca6db.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_ca6db.dir/objects.a @CMakeFiles\cmTC_ca6db.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_ca6db.dir/objects.a -Wl,--no-whole-archive -o cmTC_ca6db.exe -Wl,--out-implib,libcmTC_ca6db.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_ca6db.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_6129c/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_6129c.dir\build.make CMakeFiles/cmTC_6129c.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6129c.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_6129c.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_6129c.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_6129c.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_6129c.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_6129c.dir/objects.a @CMakeFiles\cmTC_6129c.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_6129c.dir/objects.a -Wl,--no-whole-archive -o cmTC_6129c.exe -Wl,--out-implib,libcmTC_6129c.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_6129c.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_0e30a/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_0e30a.dir\build.make CMakeFiles/cmTC_0e30a.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0e30a.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -O3 -Dflag_supported   -fopenmp -o CMakeFiles\cmTC_0e30a.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_0e30a.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0e30a.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_0e30a.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_0e30a.dir/objects.a @CMakeFiles\cmTC_0e30a.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -O3 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_0e30a.dir/objects.a -Wl,--no-whole-archive -o cmTC_0e30a.exe -Wl,--out-implib,libcmTC_0e30a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_0e30a.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_7864d/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_7864d.dir\build.make CMakeFiles/cmTC_7864d.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7864d.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Dflag_supported   -Wall -o CMakeFiles\cmTC_7864d.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_7864d.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_7864d.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_7864d.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_7864d.dir/objects.a @CMakeFiles\cmTC_7864d.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_7864d.dir/objects.a -Wl,--no-whole-archive -o cmTC_7864d.exe -Wl,--out-implib,libcmTC_7864d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_7864d.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_12d0a/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_12d0a.dir\build.make CMakeFiles/cmTC_12d0a.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_12d0a.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_12d0a.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_12d0a.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_12d0a.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_12d0a.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_12d0a.dir/objects.a @CMakeFiles\cmTC_12d0a.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_12d0a.dir/objects.a -Wl,--no-whole-archive -o cmTC_12d0a.exe -Wl,--out-implib,libcmTC_12d0a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_12d0a.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_30f25/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_30f25.dir\build.make CMakeFiles/cmTC_30f25.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_30f25.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_30f25.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_30f25.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_30f25.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_30f25.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_30f25.dir/objects.a @CMakeFiles\cmTC_30f25.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_30f25.dir/objects.a -Wl,--no-whole-archive -o cmTC_30f25.exe -Wl,--out-implib,libcmTC_30f25.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_30f25.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_fa098/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_fa098.dir\build.make CMakeFiles/cmTC_fa098.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_fa098.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -Dflag_supported   -std=c++14 -o CMakeFiles\cmTC_fa098.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_fa098.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_fa098.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_fa098.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_fa098.dir/objects.a @CMakeFiles\cmTC_fa098.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_fa098.dir/objects.a -Wl,--no-whole-archive -o cmTC_fa098.exe -Wl,--out-implib,libcmTC_fa098.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_fa098.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_83f8d/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_83f8d.dir\build.make CMakeFiles/cmTC_83f8d.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_83f8d.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -Dflag_supported   -O3 -o CMakeFiles\cmTC_83f8d.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_83f8d.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_83f8d.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_83f8d.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_83f8d.dir/objects.a @CMakeFiles\cmTC_83f8d.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_83f8d.dir/objects.a -Wl,--no-whole-archive -o cmTC_83f8d.exe -Wl,--out-implib,libcmTC_83f8d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_83f8d.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Language/MinGW/bin/mingw32-make.exe cmTC_dc6b1/fast && D:/Language/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_dc6b1.dir\build.make CMakeFiles/cmTC_dc6b1.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_dc6b1.dir/src.cxx.obj
+D:\Language\MinGW\bin\g++.exe   -Wall -Wextra -pedantic -std=c++14 -O3 -Dflag_supported   -fopenmp -o CMakeFiles\cmTC_dc6b1.dir\src.cxx.obj -c D:\Work\CG\Self\softwareRendering\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_dc6b1.exe
+D:\Tools\CMake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_dc6b1.dir\link.txt --verbose=1
+D:\Tools\CMake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_dc6b1.dir/objects.a
+D:\Language\MinGW\bin\ar.exe cr CMakeFiles\cmTC_dc6b1.dir/objects.a @CMakeFiles\cmTC_dc6b1.dir\objects1.rsp
+D:\Language\MinGW\bin\g++.exe  -Wall -Wextra -pedantic -std=c++14 -O3 -Dflag_supported -Wl,--whole-archive CMakeFiles\cmTC_dc6b1.dir/objects.a -Wl,--no-whole-archive -o cmTC_dc6b1.exe -Wl,--out-implib,libcmTC_dc6b1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_dc6b1.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'D:/Work/CG/Self/softwareRendering/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
