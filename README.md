@@ -96,12 +96,6 @@ for (int i = 0; i < W; i += 10)
     }
 ```
 
-<<<<<<< HEAD
 得到如下结果：
 
 <img src="/img/points.jpg" style="width:200px;" />
-=======
-<img src="/img/colortga.jpg" style="width:100px;" />
-
-由结果可知，`TGAImage` 类构建出图片的坐标原点在左下角。
->>>>>>> c260fb7b221131cc6860016163ea5d8fbceb79c6
