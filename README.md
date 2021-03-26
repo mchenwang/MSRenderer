@@ -45,6 +45,6 @@ int main()
 
 上述代码构建了一个 500*500 的窗口，并且分为四分，涂上不同的颜色，结果如下：
 
-<img src="/img/colortga.jpg" style="zoom:33%;" />
+<img src="/img/colortga.jpg" style="width:100px;" />
 
 由结果可知，`TGAImage` 类构建出图片的坐标原点在左下角。
