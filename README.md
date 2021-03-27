@@ -1,3 +1,7 @@
+---
+typora-root-url: ./
+---
+
 # SoftwareRendering 说明
  模仿 [tinyrendering](https://github.com/ssloy/tinyrenderer/wiki/Lesson-0:-getting-started) 实现一个简单的软渲染器。
 
@@ -54,7 +58,7 @@ int main()
 
 #### 基本数据结构
 
-渲染之前需要载入模型，那么模型存储是首要任务，下面简单设计几个必备的数据结构：点、向量、矩阵。
+渲染之前需要载入模型，那么模型存储是首要任务，下面简单设计几个必备的数据结构：顶点、向量、矩阵、模型。
 
 ```c++
 template<typename T, size_t n> struct Point {
@@ -75,8 +79,8 @@ template<typename T, size_t n> struct Point {
 ```c++
 template<typename T, size_t n> struct Vertex {
     Point<T, n> p;
-    TGAColor color = TGAColor((uint8_t)255, (uint8_t)0, (uint8_t)0);
-	// 之后可能需要增加更多的顶点信息，如纹理、法向等
+    Point<T, n-1> uv;
+    Vector<T, n> normal;
     Vertex() = default;
     Vertex(const Vertex<T, n>& v) noexcept ;
     Vertex<T, n>& operator=(const Vertex<T, n>& v) noexcept ;
@@ -99,3 +103,21 @@ for (int i = 0; i < W; i += 10)
 得到如下结果：
 
 <img src="/img/points.jpg" style="width:200px;" />
+
+矩阵直接使用 `Eigen` 库，将 `Eigen` 添加到 include 目录下，在 CMakeLists.txt 中添加 `INCLUDE_DIRECTORIES(${CMAKE_CURRENT_LIST_DIR}/include)` 即可使用。
+
+模型对象是用于导入 3D obj 文件信息，如：顶点、三角形、法向、纹理坐标等信息，这里继续使用 tinyrendering 中的代码，稍作修改：
+
+```c++
+class Model {
+private:
+    std::vector<Vertex3d> vertexs;
+    std::vector<int> face;
+    TGAImage diffusemap_; // diffuse color texture
+    TGAImage normalmap_; // normal map texture
+    TGAImage specularmap_; // specular map texture
+};
+```
+
+模型从 obj 文件以及相应的 tga 文件中导入，具体实现可见源码。
+
