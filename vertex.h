@@ -31,6 +31,15 @@ using Point2d = Pointd<2>;
 using Point3d = Pointd<3>;
 
 template<typename T, size_t n> struct Vector: Point<T, n> {
+    Vector() = default;
+    template<typename U>
+    Vector(const Point<U, n>& v) {
+        this->data = std::array<T,n>(v.data);
+    }
+    template<typename U, typename V>
+    Vector(const Point<U, n>& o, const Point<V, n>& e) {
+        for(size_t i = 0; i < n; i++) (*this)[i] = (T)(e[i] - o[i]);
+    }
     T operator*(const Vector<T, n>& x) const {
         T ret = 0.f;
         for(size_t i = 0; i < n; i++) ret += (*this)[i] * x[i];
@@ -64,13 +73,21 @@ template<typename T, size_t n> struct Vector: Point<T, n> {
         for(size_t i = 0; i < n; i++) ret[i] = (*this)[i] - b[i];
         return ret;
     }
+
+    T get_cross_z(const Vector<T, n>& b) const {
+        return (*this)[0]*b[1] - (*this)[1]*b[0];
+    }
 };
 
+template<size_t n>
+using Vectori = Vector<int, n>;
 template<size_t n>
 using Vectorf = Vector<float, n>;
 template<size_t n>
 using Vectord = Vector<double, n>;
 
+using Vector2i = Vectori<2>;
+using Vector3i = Vectori<3>;
 using Vector2f = Vectorf<2>;
 using Vector3f = Vectorf<3>;
 using Vector2d = Vectord<2>;

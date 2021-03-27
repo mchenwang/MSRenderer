@@ -1,7 +1,3 @@
----
-typora-root-url: ./
----
-
 # SoftwareRendering 说明
  模仿 [tinyrendering](https://github.com/ssloy/tinyrenderer/wiki/Lesson-0:-getting-started) 实现一个简单的软渲染器。
 
@@ -121,3 +117,75 @@ private:
 
 模型从 obj 文件以及相应的 tga 文件中导入，具体实现可见源码。
 
+到这里，可以说是解决了软渲染器的输入和输出，接下来开始一步一步完成渲染的各个步骤。
+
+### Step 2 画三角形
+
+先从最简单的画三角形开始。
+
+采用扫描法，逐像素判断是否在三角形内：
+
+```c++
+void triangle(Point2i* points, TGAImage &image, TGAColor color) {
+    Point2i bboxmin({image.get_width()-1,  image.get_height()-1});
+    Point2i bboxmax({0, 0});
+    Point2i clamp({image.get_width()-1, image.get_height()-1});
+    // 先求出三角形的包围盒
+    for (int i=0; i<3; i++) {
+        for (int j=0; j<2; j++) {
+            bboxmin[j] = std::max(0,        std::min(bboxmin[j], points[i][j]));
+            bboxmax[j] = std::min(clamp[j], std::max(bboxmax[j], points[i][j]));
+        }
+    }
+    Point2i P;
+    // 对包围盒内的像素判断是否在三角形内
+    for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
+        for (P[1]=bboxmin[1]; P[1]<=bboxmax[1]; P[1]++) {
+            if (!in_triangle(points, P)) continue;
+            image.set(P[0], P[1], color);
+        }
+    }
+}
+```
+
+其中，判断点是否在三角形内可以使用向量叉积。由叉积定义可知，两个向量叉积的结果向量垂直于这两个向量组成的平面，而在右手系中，用右手定则可以判断结果向量的方向。那么给定三角形 $\triangle ABC$ 和点 $O$，如果向量 $\vec{AB}\times \vec{AO}$、 $\vec{BC}\times \vec{BO}$、 $\vec{CA}\times \vec{CO}$ 的方向相同，则点在三角形内。
+
+简单测试一下：
+
+```c++
+Point2i points[3] = {Point2i({280,30}), Point2i({10, 10}), Point2i({150, 280})};
+triangle(points, image, TGAColor(255, 255, 255));
+image.flip_vertically();
+image.write_tga_file("output.tga");
+```
+
+得到：
+
+<img src="/img/triangle.jpg" style="width:200px;" />
+
+仔细观察，可以发现三角形的边界并不平滑，有走样现象：
+
+<img src="/img/aliasing.png" style="width:200px;">
+
+可以采用 MSAA 的方法来减轻走样现象：
+
+```c++
+for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
+    for (P[1]=bboxmin[1]; P[1]<=bboxmax[1]; P[1]++) {
+        int n = std::sqrt(sampling_num);
+        double step = 1.0 / (n<<1);
+        Point2d sp({P[0]+step, P[1]+step});
+        int cnt = 0;
+        for(double tx = step; tx <= 1; tx += step*2) {
+            for(double ty = step; ty <= 1; ty += step*2) {
+                if (in_triangle(points, Point2d({P[0]+tx, P[1]+ty}))) ++cnt;
+            }
+        }
+        if(cnt > 0) image.set(P[0], P[1], color*((double)cnt/sampling_num));
+    }
+}
+```
+
+得到结果：
+
+<img src="/img/triangleMSAA.jpg" style="width:200px;" /><img src="/img/anti-aliasingMSAA.png" style="width:200px;">
