@@ -193,12 +193,11 @@ for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
 除了使用叉积判断像素在不在三角形内外，还可以使用重心坐标的方法，如果一个点的重心坐标 $(1-u-v,u, v)$ 都不小于 0，则该点在三角形内。
 实际上，根据重心坐标定义，可以列出如下线性方程组，从而解出重心坐标：
 $$
-\left\{ 
+
     \begin{array}{c}
         u\vec{AB}_x+v\vec{AC}_x+\vec{PA}_x=0 \\ 
         u\vec{AB}_y+v\vec{AC}_y+\vec{PA}_y=0 
     \end{array}
-\right.
 $$
 
 ```c++
