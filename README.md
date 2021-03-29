@@ -189,3 +189,75 @@ for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
 得到结果：
 
 <img src="/img/triangleMSAA.jpg" style="width:200px;" /><img src="/img/anti-aliasingMSAA.png" style="width:200px;">
+
+除了使用叉积判断像素在不在三角形内外，还可以使用重心坐标的方法，如果一个点的重心坐标 $(1-u-v,u, v)$ 都不小于 0，则该点在三角形内。
+实际上，根据重心坐标定义，可以列出如下线性方程组，从而解出重心坐标：
+$$
+\left\{ 
+    \begin{array}{c}
+        u\vec{AB}_x+v\vec{AC}_x+\vec{PA}_x=0 \\ 
+        u\vec{AB}_y+v\vec{AC}_y+\vec{PA}_y=0 
+    \end{array}
+\right.
+$$
+
+```c++
+Vector3d barycentric(Point3d A, Point3d B, Point3d C, Point3d P) {
+    Vector3d x({B[0]-A[0], C[0]-A[0], A[0]-P[0]});
+    Vector3d y({B[1]-A[1], C[1]-A[1], A[1]-P[1]});
+    double u = (x[1]*y[2] - x[2]*y[1]) / (x[0]*y[1] - x[1]*y[0]);
+    double v = (x[0]*y[2] - x[2]*y[0]) / (x[1]*y[0] - x[0]*y[1]);
+    return Vector3d({1.-u-v, u, v});
+}
+```
+
+那么绘制三角形的代码即为：
+
+```c++
+Vector3d bc_screen  = barycentric(points[0], points[1], points[2], P);
+if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+image.set(P[0], P[1], color);
+```
+
+### Step 3 绘制模型
+
+obj 文件中模型由很多三角形组成，因此，只要分别画出每个三角形，即可绘制出模型。当然其中涉及到坐标从三维空间到二维屏幕的映射。
+
+这里先明确几个概念：绘制单个模型时，模型坐标即为世界坐标；世界坐标轴为右手系，从垂直屏幕朝外的方向为 z 轴正方向，x 轴正方向朝右；三角形点逆时针排列为正方向。
+
+此时，如果观察模型的正面，将 z 轴坐标去掉，就可以得到二维空间的点的坐标，而 obj 文件中坐标的值的范围在 $[-1,1]$，因此，需要将坐标映射到屏幕上: $[0,W-1][0,H-1]$。
+
+```c++
+Point3d p = model.get_point(i, j);
+screen_coords[j] = Vector3d({(p[0]+1)*W*0.5, (p[1]+1)*H*0.5, p[2]});
+world_coords[j] = p;
+```
+
+为了体现立体感，需要给不同朝向的三角面片画上不同深浅的颜色，规定一束朝 z 轴负向的光；
+
+```c++
+Vector3d light_dir({0., 0., -1.});
+```
+
+三角形的朝向可以用法线方向来判断，根据三角形两条边叉乘可以求出法线，如果法线的 z 值为正，则表示可以看到该三角形，否则，不能看到；并且归一化后 z 值的大小决定与光线的夹角，越大，则越正对光照，应该越亮，反之越暗：
+
+```c++
+Vector3d n = cross(world_coords[1] - world_coords[0], world_coords[2] - world_coords[0]);
+n.normalize(); // 计算法线需要根据世界坐标计算，屏幕坐标的x\y被拉伸了
+double intensity = - (n*light_dir);
+if(intensity > 0) triangle(screen_coords, image, color*intensity);
+```
+
+结果如下：
+
+<img src="/img/face1.jpg" style="width:200px;" />
+
+这里不难发现，模型嘴部等几个地方出现了异样，因为上述做法是对三角形顺序遍历，逐一绘制，而当三角形的顺序不是按照画家算法的顺序存储，或者三角形存在交叉的情况时，就会出现错误的覆盖现象。
+
+解决这个问题需要用到 z-buffer，即不再以三角形为单位绘制，而是以像素为单位，逐个计算像素的深度值，深度大（z 大）的覆盖深度小的。三角形中间的像素深度值，通过三角形重心坐标进行差值计算。结果如下：
+
+<img src="/img/facez-buffer.jpg" style="width:200px;" />
+
+将 z-buffer 可视化绘制一下：
+
+<img src="/img/z-buffer.jpg" style="width:200px;" />

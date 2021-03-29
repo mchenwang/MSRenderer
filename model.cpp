@@ -3,6 +3,8 @@
 #include <sstream>
 #include "model.h"
 
+using namespace MSRender;
+
 Model::Model(const std::string filename): vertexs(), face() {
     std::ifstream in;
     in.open(filename, std::ifstream::in);
@@ -50,9 +52,9 @@ Model::Model(const std::string filename): vertexs(), face() {
         }
     }
     in.close();
-    load_texture(filename, "_diffuse.tga",    diffusemap_);
-    load_texture(filename, "_nm_tangent.tga", normalmap_);
-    load_texture(filename, "_spec.tga",       specularmap_);
+    // load_texture(filename, "_diffuse.tga",    diffusemap_);
+    // load_texture(filename, "_nm_tangent.tga", normalmap_);
+    // load_texture(filename, "_spec.tga",       specularmap_);
 }
 
 int Model::vertexs_size() const {
