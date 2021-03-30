@@ -70,20 +70,7 @@ template<typename T, size_t n> struct Point {
     Point<T, n> operator+(const Point<T, n>& b) const ;
     Point<T, n> operator-(const Point<T, n>& b) const ;
 };
-```
-
-```c++
-template<typename T, size_t n> struct Vertex {
-    Point<T, n> p;
-    Point<T, n-1> uv;
-    Vector<T, n> normal;
-    Vertex() = default;
-    Vertex(const Vertex<T, n>& v) noexcept ;
-    Vertex<T, n>& operator=(const Vertex<T, n>& v) noexcept ;
-
-    T operator[](const size_t i) const ;
-    T& operator[](const size_t i) ;
-};
+template<typename T, size_t n> struct Vector: Point<T, n> {};
 ```
 
 简单测试一下：
@@ -107,13 +94,21 @@ for (int i = 0; i < W; i += 10)
 ```c++
 class Model {
 private:
-    std::vector<Vertex3d> vertexs;
-    std::vector<int> face;
-    TGAImage diffusemap_; // diffuse color texture
-    TGAImage normalmap_; // normal map texture
-    TGAImage specularmap_; // specular map texture
+    std::vector<Point3d> vertices;
+    std::vector<Point2d> uvs;
+    std::vector<Vector3d> normals;
+    std::vector<int> face_vertices;
+    std::vector<int> face_uvs;
+    std::vector<int> face_normal;
+    TGAImage diffusemap_;         // diffuse color texture
+    TGAImage normalmap_;          // normal map texture
+    TGAImage specularmap_;        // specular map texture
 };
 ```
+
+> 值得一提的是，模型中的一个顶点可能属于多个三角形，而在不同三角形中的 uv 坐标和法向是不同，因此需要分开存储；而我在设计之初，是将顶点坐标、uv 坐标和法向封装成了一个 Vertex 类，导致后续加入贴图后，出现了问题，可见下图：
+>
+> <img src="/img/texturebug.png" style="width:200px;" />
 
 模型从 obj 文件以及相应的 tga 文件中导入，具体实现可见源码。
 
@@ -253,10 +248,45 @@ if(intensity > 0) triangle(screen_coords, image, color*intensity);
 
 这里不难发现，模型嘴部等几个地方出现了异样，因为上述做法是对三角形顺序遍历，逐一绘制，而当三角形的顺序不是按照画家算法的顺序存储，或者三角形存在交叉的情况时，就会出现错误的覆盖现象。
 
-解决这个问题需要用到 z-buffer，即不再以三角形为单位绘制，而是以像素为单位，逐个计算像素的深度值，深度大（z 大）的覆盖深度小的。三角形中间的像素深度值，通过三角形重心坐标进行差值计算。结果如下：
+解决这个问题需要用到 z-buffer，即不再以三角形为单位绘制，而是以像素为单位，逐个计算像素的深度值，深度大（z 大）的覆盖深度小的。三角形中间的像素深度值，通过三角形重心坐标进行差值计算。
+
+```c++
+Vector3d bc_screen  = barycentric(points[0], points[1], points[2], P);
+if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+double z = 0.;
+for (int i=0; i<3; i++) z += points[i][2]*bc_screen[i];
+if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
+    zbuffer[P[0]+P[1]*image.get_width()] = z;
+    image.set(P[0], P[1], color);
+}
+```
+
+结果如下：
 
 <img src="/img/facez-buffer.jpg" style="width:200px;" />
 
 将 z-buffer 可视化绘制一下：
 
 <img src="/img/z-buffer.jpg" style="width:200px;" />
+
+当然，重心坐标插值还可以做更多的事情，比如加入纹理，利用 uv 坐标插值，找到像素点在纹理贴图中的颜色，只要对之前的代码稍加修改，向函数中传入纹理贴图即可，uv 坐标的插值与 z 的插值相同：
+
+```c++
+Vector3d bc_screen  = barycentric(points[0], points[1], points[2], P);
+if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+double z = 0.;
+Point2d uv({0., 0.});
+for (int i=0; i<3; i++){
+    z += points[i][2]*bc_screen[i];
+    uv[0] += uvs[i][0]*bc_screen[i];
+    uv[1] += uvs[i][1]*bc_screen[i];
+}
+if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
+    zbuffer[P[0]+P[1]*image.get_width()] = z;
+    image.set(P[0], P[1], texture.get(uv[0]*texture.get_width(), uv[1]*texture.get_height())*intensity);
+}
+```
+
+结果如下：
+
+<img src="/img/texture.jpg" style="width:200px;" />

@@ -49,7 +49,6 @@ void triangle(Point3d* points, double* zbuffer, TGAImage &image, TGAColor color)
             //     image.set(P[0], P[1], color);
             double z = 0.;
             for (int i=0; i<3; i++) z += points[i][2]*bc_screen[i];
-            // std::cout<<z<<std::endl;
             if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
                 zbuffer[P[0]+P[1]*image.get_width()] = z;
                 image.set(P[0], P[1], color);
@@ -108,6 +107,39 @@ void draw_zbuffer(double* zbuffer, TGAImage &image, TGAColor color) {
                 if(z > 0.7) image.set(i, j, color);
                 else if(z < -0.5) image.set(i, j, color*0.1);
                 else image.set(i, j, color*((z+0.5)*0.5));
+            }
+        }
+    }
+}
+
+void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAImage& image, const TGAImage& texture, double& intensity) {
+    Point2d bboxmin({(double)image.get_width()-1, (double)image.get_height()-1});
+    Point2d bboxmax({0., 0.});
+    Point2d clamp({(double)image.get_width()-1, (double)image.get_height()-1});
+    for (int i=0; i<3; i++) {
+        for (int j=0; j<2; j++) {
+            bboxmin[j] = std::max(0.,       std::min(bboxmin[j], points[i][j]));
+            bboxmax[j] = std::min(clamp[j], std::max(bboxmax[j], points[i][j]));
+        }
+    }
+    
+    Point3i P;
+    for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
+        for (P[1]=bboxmin[1]; P[1]<=bboxmax[1]; P[1]++) {
+            Vector3d bc_screen  = barycentric(points[0], points[1], points[2], P);
+            if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+            // if (in_triangle(points, P))
+            //     image.set(P[0], P[1], color);
+            double z = 0.;
+            Point2d uv({0., 0.});
+            for (int i=0; i<3; i++){
+                z += points[i][2]*bc_screen[i];
+                uv[0] += uvs[i][0]*bc_screen[i];
+                uv[1] += uvs[i][1]*bc_screen[i];
+            }
+            if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
+                zbuffer[P[0]+P[1]*image.get_width()] = z;
+                image.set(P[0], P[1], texture.get(uv[0]*texture.get_width(), uv[1]*texture.get_height())*intensity);
             }
         }
     }

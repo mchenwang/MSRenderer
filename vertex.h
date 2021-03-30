@@ -129,42 +129,46 @@ namespace MSRender {
         return ret;
     }
 
-    template<typename T, size_t n> struct Vertex {
-        Point<T, n> p;
-        Point<T, n-1> uv;
-        Vector<T, n> normal;
+    // template<typename T, size_t n> struct Vertex {
+    //     Point<T, n> p;
+    //     Point<T, n-1> uv;
+    //     Vector<T, n> normal;
 
-        Vertex() = default;
-        explicit Vertex(const std::array<T, n>&& data_) noexcept { p.data = data_; }
-        Vertex(const Vertex<T, n>& v) noexcept { p = v.p; }
+    //     Vertex() = default;
+    //     explicit Vertex(const std::array<T, n>&& data_) noexcept { p.data = data_; }
+    //     Vertex(const Vertex<T, n>& v) noexcept {
+    //         p = v.p;
+    //         uv = v.uv;
+    //         normal = v.normal;
+    //     }
 
-        Vertex<T, n>& operator=(const Vertex<T, n>& v) noexcept {
-            p = v.p;
-            uv = v.uv;
-            normal = v.normal;
-            return *this;
-        }
+    //     Vertex<T, n>& operator=(const Vertex<T, n>& v) noexcept {
+    //         p = v.p;
+    //         uv = v.uv;
+    //         normal = v.normal;
+    //         return *this;
+    //     }
 
-        T operator[](const size_t i) const { return p[i]; }
-        T& operator[](const size_t i) { return p[i]; }
+    //     T operator[](const size_t i) const { return p[i]; }
+    //     T& operator[](const size_t i) { return p[i]; }
 
-        void set_uv(const Point<T, n-1>& uv_) { uv = uv_; }
-        void set_normal(const Vector<T, n>& normal_) { normal = normal_; }
-    };
+    //     void set_uv(const Point<T, n-1> uv_) { uv = uv_; }
+    //     void set_normal(const Vector<T, n> normal_) { normal = normal_; }
+    // };
 
-    template<size_t n>
-    using Vertexi = Vertex<int, n>;
-    template<size_t n>
-    using Vertexf = Vertex<float, n>;
-    template<size_t n>
-    using Vertexd = Vertex<double, n>;
+    // template<size_t n>
+    // using Vertexi = Vertex<int, n>;
+    // template<size_t n>
+    // using Vertexf = Vertex<float, n>;
+    // template<size_t n>
+    // using Vertexd = Vertex<double, n>;
 
-    using Vertex2i = Vertexi<2>;
-    using Vertex3i = Vertexi<3>;
-    using Vertex2f = Vertexf<2>;
-    using Vertex3f = Vertexf<3>;
-    using Vertex2d = Vertexd<2>;
-    using Vertex3d = Vertexd<3>;
+    // using Vertex2i = Vertexi<2>;
+    // using Vertex3i = Vertexi<3>;
+    // using Vertex2f = Vertexf<2>;
+    // using Vertex3f = Vertexf<3>;
+    // using Vertex2d = Vertexd<2>;
+    // using Vertex3d = Vertexd<3>;
 }
 
 #endif

@@ -5,7 +5,7 @@
 
 using namespace MSRender;
 
-Model::Model(const std::string filename): vertexs(), face() {
+Model::Model(const std::string filename) {
     std::ifstream in;
     in.open(filename, std::ifstream::in);
     if(in.fail()) {
@@ -20,14 +20,16 @@ Model::Model(const std::string filename): vertexs(), face() {
         std::getline(in, line);
         std::istringstream iss(line);
         if(!line.compare(0, 2, "v ")) {
-            Vertex3d v;
+            Point3d v;
             iss >> _ >> v[0] >> v[1] >> v[2];
-            vertexs.push_back(v);
+            vertices.push_back(v);
         }
         else if(!line.compare(0, 3, "vt ")) {
             Point2d vt;
             iss >> _ >> vt[0] >> vt[1];
             vts.push_back(vt);
+
+            uvs.push_back(vt);
         }
         else if(!line.compare(0, 3, "vn ")) {
             Vector3d vn;
@@ -39,9 +41,9 @@ Model::Model(const std::string filename): vertexs(), face() {
             char c;
             iss >> c;
             while(iss >> v >> c >> t >> c >> n) {
-                face.push_back(v-1);
-                vertexs[v-1].set_uv(vts[t-1]);
-                vertexs[v-1].set_normal(vns[n-1]);
+                face_vertices.push_back(v-1);
+                face_uvs.push_back(t-1);
+                face_normal.push_back(n-1);
                 cnt++;
             }
             if (cnt != 3) {
@@ -52,33 +54,21 @@ Model::Model(const std::string filename): vertexs(), face() {
         }
     }
     in.close();
-    // load_texture(filename, "_diffuse.tga",    diffusemap_);
+    load_texture(filename, "_diffuse.tga",    diffusemap_);
     // load_texture(filename, "_nm_tangent.tga", normalmap_);
     // load_texture(filename, "_spec.tga",       specularmap_);
 }
 
 int Model::vertexs_size() const {
-    return vertexs.size();
+    return vertices.size();
 }
 
 int Model::faces_size() const {
-    return face.size() / 3;
+    return face_vertices.size() / 3;
 }
 
-Vertex3d Model::get_vertex(const int i) const {
-    return vertexs[i];
-}
-
-Vertex3d Model::get_vertex(const int iface, const int nthvert) const {
-    return vertexs[face[iface*3+nthvert]];
-}
-
-Point3d Model::get_point(const int i) const {
-    return vertexs[i].p;
-}
-
-Point3d Model::get_point(const int iface, const int nthvert) const {
-    return vertexs[face[iface*3+nthvert]].p;
+Point3d Model::get_vertex(const int iface, const int nthvert) const {
+    return vertices[face_vertices[iface*3+nthvert]];
 }
 
 void Model::load_texture(std::string filename, const std::string suffix, TGAImage &img) {
@@ -89,11 +79,11 @@ void Model::load_texture(std::string filename, const std::string suffix, TGAImag
     img.flip_vertically();
 }
 
-TGAColor Model::diffuse(const Vector2d &uvf) const {
+TGAColor Model::get_diffuse(const Point2d &uvf) const {
     return diffusemap_.get(uvf[0]*diffusemap_.get_width(), uvf[1]*diffusemap_.get_height());
 }
 
-Vector3d Model::get_normal(const Vector2d &uvf) const {
+Vector3d Model::get_normal(const Point2d &uvf) const {
     TGAColor c = normalmap_.get(uvf[0]*normalmap_.get_width(), uvf[1]*normalmap_.get_height());
     Vector3d res;
     for (int i=0; i<3; i++)
@@ -101,14 +91,24 @@ Vector3d Model::get_normal(const Vector2d &uvf) const {
     return res;
 }
 
-double Model::specular(const Vector2d &uvf) const {
+double Model::get_specular(const Point2d &uvf) const {
     return specularmap_.get(uvf[0]*specularmap_.get_width(), uvf[1]*specularmap_.get_height())[0];
 }
 
-Point2d Model::uv(const int iface, const int nthvert) const {
-    return vertexs[face[iface*3+nthvert]].uv;
+Point2d Model::get_uv(const int iface, const int nthvert) const {
+    return uvs[face_uvs[iface*3+nthvert]];
 }
 
 Vector3d Model::get_normal(const int iface, const int nthvert) const {
-    return vertexs[face[iface*3+nthvert]].normal;
+    return normals[face_normal[iface*3+nthvert]];
+}
+
+const TGAImage& Model::get_diffusemap() const {
+    return diffusemap_;
+}
+const TGAImage& Model::get_normalmap() const {
+    return normalmap_;
+}
+const TGAImage& Model::get_specularmap() const {
+    return specularmap_;
 }
