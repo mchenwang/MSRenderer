@@ -290,3 +290,7 @@ if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
 结果如下：
 
 <img src="/img/texture.jpg" style="width:200px;" />
+
+## TODO
+
+- 改变观察方向，加入 MVP 变换
