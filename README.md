@@ -291,6 +291,130 @@ if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
 
 <img src="/img/texture.jpg" style="width:200px;" />
 
+### Step 4 变换观察视角
+
+在这里开始，进一步明确几个概念：世界坐标，右手系，左下角为原点，屏幕朝外是 z 轴正方向，朝右是 x 轴正方向；模型坐标，即 obj 文件中记录的顶点坐标构成的坐标系；相机坐标\相机视角，即相机在世界坐标的什么位置从什么方向观察世界，决定了最后图片呈现的内容以及方向；模型变换，将模型在模型坐标下进行平移旋转和缩放；视图变换，将相机摆放到某个位置，为了简便计算，约定将相机的位置变换为世界坐标的原点；投影变换，将 3D 模型投影到平面上，上述直接去掉 z 轴的方式为正交投影变换，虽然是固定的，接下来将要实现的是透视投影变换，根据视锥将看到的内容投影到平面上。
+
+先摆物体，包括平移、旋转、缩放：
+
+```c++
+Eigen::Matrix4d Scale; // 缩放
+Scale << scale[0], 0., 0., 0.,
+         0., scale[1], 0., 0.,
+         0., 0., scale[2], 0.,
+         0., 0., 0., 1.;
+Eigen::Matrix4d Rotate;
+double cosx = std::cos(thetas[0]*PI/180.);
+double sinx = 1. - cosx * cosx;
+double cosy = std::cos(thetas[1]*PI/180.);
+double siny = 1. - cosy * cosy;
+double cosz = std::cos(thetas[2]*PI/180.);
+double sinz = 1. - cosz * cosz;
+Eigen::Matrix4d RotateX; // 绕 x 轴旋转
+RotateX << 1., 0., 0., 0.,
+           0., cosx, -sinx, 0.,
+           0., sinx, cosx, 0.,
+           0., 0., 0., 1.;
+Eigen::Matrix4d RotateY; // 绕 y 轴旋转
+RotateY << cosy, 0., siny, 0.,
+           0., 1., 0., 0.,
+           -siny, 0., cosy, 0.,
+           0., 0., 0., 1.;
+Eigen::Matrix4d RotateZ; // 绕 z 轴旋转
+RotateZ << cosz, -sinz, 0., 0.,
+           sinz, cosz, 0., 0.,
+           0., 0., 1., 0.,
+           0., 0., 0., 1.;
+Rotate = RotateX * RotateY * RotateZ;
+Eigen::Matrix4d Translate; // 平移
+Translate << 1., 0., 0., translate[0],
+             0., 1., 0., translate[1],
+             0., 0., 1., translate[2],
+             0., 0., 0., 1.;
+```
+
+这里模型的旋转是相对自身的，因此需要先做旋转变换，`Translate*Scale*Rotate` 即为模型变换矩阵。再摆相机，此时相机位置随意设置，包括相机看向的方向以及朝上的方向：
+
+```c++
+// 求出相机坐标系
+Vector3d z = (eye - center).normalize();
+Vector3d x = cross(eye_up_dir, z).normalize();
+Vector3d y = cross(z, x).normalize();
+Eigen::Matrix4d T; // 平移到原点
+T << 1., 0., 0., -eye[0],
+     0., 1., 0., -eye[1],
+     0., 0., 1., -eye[2],
+     0., 0., 0., 1.;
+Eigen::Matrix4d R; // 旋转到相机坐标系与世界坐标系重合
+// g = -z 相机看向的方向是 z 轴负向
+R << x[0], x[1], x[2], 0.,
+     y[0], y[1], y[2], 0.,
+     z[0], z[1], z[2], 0.,
+     0.  , 0.  , 0.  , 1.;
+```
+
+先做平移变换再旋转，因此 `R*T` 即为视图变换的矩阵。最后将相机能够拍到的地方投影到平面上：
+
+```c++
+// 需要视锥的参数，这里是相机变换到原点后的视锥，z_near/z_far 分别是相机能看到最近和最远的平面 z 轴值；
+// eye_fov 是视锥切面的顶点角度
+// aspect_ratio 即视锥长宽比
+double n = z_near, f = z_far;
+double t = -n * std::tan(eye_fov * 0.5 * PI/ 180);
+double b = -t;
+double r = t * aspect_ratio;
+double l = -r;
+Eigen::Matrix4d translate;
+translate << 1., 0., 0., -(l+r)*0.5,
+             0., 1., 0., -(t+b)*0.5,
+             0., 0., 1., -(f+n)*0.5,
+             0., 0., 0., 1.;
+Eigen::Matrix4d scale;
+scale << 2./(r-l), 0., 0., 0.,
+         0., 2./(t-b), 0., 0.,
+         0., 0., 2./(n-f), 0.,
+         0., 0., 0., 1.;
+Eigen::Matrix4d persp_to_ortho;
+persp_to_ortho << n, 0., 0., 0.,
+                  0., n, 0., 0.,
+                  0., 0., (n+f), -n*f,
+                  0., 0., 1., 0.;
+return translate * scale * persp_to_ortho;
+```
+
+下面初始化一些参数
+
+```c++
+const Point3d eye({1., 0.5, 1.}); // 相机初始位置
+const Vector3d eye_up_dir({0., 1., 0.}); // 相机朝上的位置，不必垂直，后面可根据叉乘算出相机坐标系
+const Point3d center({0., 0., 0.}); // 相机看向的点
+const double scale[] = {1., 1., 1.};
+const double thetas[] = {0., 0., 0.};
+const Vector3d translate({0., 0., 0.});
+Eigen::Matrix4d mvp = projection_transf(90., 1.0, -1., -3.) * 
+                      view_transf(eye, eye_up_dir, center) *
+                      model_transf(scale, thetas, translate);
+```
+
+当然，在光栅化时传入的点的坐标需要改为变换后的：
+
+```c++
+Eigen::Vector4d temp = mvp * Eigen::Vector4d(p[0], p[1], p[2], 1.);
+// 视口变换
+screen_coords[j] = Vector3d({(temp[0]/temp[3]+1)*W*0.5, (temp[1]/temp[3]+1)*H*0.5, temp[2]/temp[3]});
+world_coords[j] = Point3d({temp[0]/temp[3], temp[1]/temp[3], temp[2]/temp[3]});
+```
+
+这里包括之前都以及用到了视口变换，即模型的坐标是在 $[-1,1]^3$ 空间下的，透视投影后的坐标是在 $[-1,1]^2$ 平面内的，现在需要把平面扩展到平面空间，即为视口变换。
+
+下面看看结果：
+
+<img src="/img/mvp.jpg" style="width:200px;" />
+
+试着修改一些参数，比如绕 z 轴旋转 90°：
+
+<img src="/img/mvp2.jpg" style="width:200px;" />
+
 ## TODO
 
-- 改变观察方向，加入 MVP 变换
+- Phong-Shading

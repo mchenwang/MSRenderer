@@ -112,7 +112,7 @@ void draw_zbuffer(double* zbuffer, TGAImage &image, TGAColor color) {
     }
 }
 
-void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAImage& image, const TGAImage& texture, double& intensity) {
+void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAImage& image, const TGAImage& texture, double intensity) {
     Point2d bboxmin({(double)image.get_width()-1, (double)image.get_height()-1});
     Point2d bboxmax({0., 0.});
     Point2d clamp({(double)image.get_width()-1, (double)image.get_height()-1});
@@ -140,7 +140,94 @@ void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAIm
             if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
                 zbuffer[P[0]+P[1]*image.get_width()] = z;
                 image.set(P[0], P[1], texture.get(uv[0]*texture.get_width(), uv[1]*texture.get_height())*intensity);
+                // image.set(P[0], P[1], TGAColor(255,255,255)*intensity);
             }
         }
     }
+}
+
+
+constexpr double PI = 3.141592653;
+Eigen::Matrix4d model_transf(const double* scale, const double* thetas, const Vector3d& translate) {
+    Eigen::Matrix4d Scale;
+    Scale << scale[0], 0., 0., 0.,
+             0., scale[1], 0., 0.,
+             0., 0., scale[2], 0.,
+             0., 0., 0., 1.;
+    Eigen::Matrix4d Rotate;
+    double cosx = std::cos(thetas[0]*PI/180.);
+    double sinx = 1. - cosx * cosx;
+    double cosy = std::cos(thetas[1]*PI/180.);
+    double siny = 1. - cosy * cosy;
+    double cosz = std::cos(thetas[2]*PI/180.);
+    double sinz = 1. - cosz * cosz;
+    // Eigen::Matrix4d RotateX;
+    // RotateX << 1., 0., 0., 0.,
+    //            0., cosx, -sinx, 0.,
+    //            0., sinx, cosx, 0.,
+    //            0., 0., 0., 1.;
+    // Eigen::Matrix4d RotateY;
+    // RotateY << cosy, 0., siny, 0.,
+    //            0., 1., 0., 0.,
+    //            -siny, 0., cosy, 0.,
+    //            0., 0., 0., 1.;
+    // Eigen::Matrix4d RotateZ;
+    // RotateZ << cosz, -sinz, 0., 0.,
+    //            sinz, cosz, 0., 0.,
+    //            0., 0., 1., 0.,
+    //            0., 0., 0., 1.;
+    // Rotate = RotateX * RotateY * RotateZ;
+    Rotate << cosy*cosz, -cosy*sinz, siny, 0.,
+              sinx*siny*cosz+cosx*sinz, -sinx*siny*sinz+cosx*cosz, -sinx*cosy, 0.,
+              -cosx*siny*cosz+sinx*sinz, cosx*siny*sinz+sinx*cosz, cosx*cosy, 0.,
+              0., 0., 0., 1.;
+    Eigen::Matrix4d Translate;
+    Translate << 1., 0., 0., translate[0],
+                 0., 1., 0., translate[1],
+                 0., 0., 1., translate[2],
+                 0., 0., 0., 1.;
+    return Translate * Scale * Rotate;
+}
+
+Eigen::Matrix4d view_transf(const Point3d& eye, const Vector3d& eye_up_dir, const Point3d& center) {
+    Vector3d z = (eye - center).normalize();
+    Vector3d x = cross(eye_up_dir, z).normalize();
+    Vector3d y = cross(z, x).normalize();
+
+    Eigen::Matrix4d T;
+    T << 1., 0., 0., -eye[0],
+         0., 1., 0., -eye[1],
+         0., 0., 1., -eye[2],
+         0., 0., 0., 1.;
+    Eigen::Matrix4d R;
+    // g = -z
+    R << x[0], x[1], x[2], 0.,
+         y[0], y[1], y[2], 0.,
+         z[0], z[1], z[2], 0.,
+         0.  , 0.  , 0.  , 1.;
+    return R*T;
+}
+
+Eigen::Matrix4d projection_transf(double eye_fov, double aspect_ratio, double z_near, double z_far) {
+    double n = z_near, f = z_far;
+    double t = -n * std::tan(eye_fov * 0.5 * PI/ 180);
+    double b = -t;
+    double r = t * aspect_ratio;
+    double l = -r;
+    Eigen::Matrix4d translate;
+    translate << 1., 0., 0., -(l+r)*0.5,
+                 0., 1., 0., -(t+b)*0.5,
+                 0., 0., 1., -(f+n)*0.5,
+                 0., 0., 0., 1.;
+    Eigen::Matrix4d scale;
+    scale << 2./(r-l), 0., 0., 0.,
+             0., 2./(t-b), 0., 0.,
+             0., 0., 2./(n-f), 0.,
+             0., 0., 0., 1.;
+    Eigen::Matrix4d persp_to_ortho;
+    persp_to_ortho << n, 0., 0., 0.,
+                      0., n, 0., 0.,
+                      0., 0., (n+f), -n*f,
+                      0., 0., 1., 0.;
+    return translate * scale * persp_to_ortho;
 }

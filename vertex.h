@@ -80,7 +80,7 @@ namespace MSRender {
             (*this) /= norm();
             return *this;
         }
-        Vector<T, n> normalized() {
+        Vector<T, n> normalized() const {
             return (*this)/norm();
         }
         

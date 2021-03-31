@@ -62,19 +62,55 @@ void draw_model_with_texture() {
     }
 }
 
+void draw_mvp() {
+    // const Point3d eye({0., 0.3, 2.});
+    const Point3d eye({1., 0.5, 1.});
+    const Vector3d eye_up_dir({0., 1., 0.});
+    const Point3d center({0., 0., 0.});
+    const double scale[] = {1., 1., 1.};
+    const double thetas[] = {0., 0., -90.};
+    const Vector3d translate({0., 0., 0.});
+
+    Eigen::Matrix4d mvp = projection_transf(90., 1.0, -1., -3.) * view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
+    Vector3d light_dir({0., 0., -1.});
+    light_dir.normalize();
+    const TGAColor color(255, 255, 255);
+    for(int i = 0; i < model.faces_size(); i++) {
+        Point3d screen_coords[3];
+        Point3d world_coords[3];
+        Point2d uvs[3];
+        for(int j = 0; j < 3; j++) {
+            Point3d p = model.get_vertex(i, j);
+            Eigen::Vector4d temp = mvp * Eigen::Vector4d(p[0], p[1], p[2], 1.);
+            // 视口变换
+            screen_coords[j] = Vector3d({(temp[0]/temp[3]+1)*W*0.5, (temp[1]/temp[3]+1)*H*0.5, temp[2]/temp[3]});
+            world_coords[j] = Point3d({temp[0]/temp[3], temp[1]/temp[3], temp[2]/temp[3]});
+            // world_coords[j] = p;
+            uvs[j] = model.get_uv(i, j);
+        }
+        Vector3d n = cross(world_coords[1] - world_coords[0], world_coords[2] - world_coords[0]);
+        n.normalize();
+        double intensity = - (n*light_dir);
+        if(intensity > 0){
+            triangle_with_texture(screen_coords, uvs, zbuffer, image, model.get_diffusemap(), intensity);
+        }
+    }
+}
+
 int main(int argc, char** argv)
 {
     if (argc == 2) {
         model = Model(argv[1]);
     } else {
         // model = Model("../obj/floor.obj");
-        // model = Model("../obj/african_head/african_head.obj");
-        model = Model("../obj/diablo3_pose/diablo3_pose.obj");
+        model = Model("../obj/african_head/african_head.obj");
+        // model = Model("../obj/diablo3_pose/diablo3_pose.obj");
     }
     for(int i = W*H; i >= 0; i--) zbuffer[i] = -1.1;
     // #pragma omp parallel for
     // draw_model();
-    draw_model_with_texture();
+    // draw_model_with_texture();
+    draw_mvp();
     // image.flip_vertically();
     image.write_tga_file("output.tga");
     return 0;
