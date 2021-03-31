@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 #include "model.h"
-#include "draw.h"
+#include "rasterization.h"
 
 constexpr int W = 1200;
 constexpr int H = 1200;
@@ -68,8 +68,8 @@ int main(int argc, char** argv)
         model = Model(argv[1]);
     } else {
         // model = Model("../obj/floor.obj");
-        model = Model("../obj/african_head/african_head.obj");
-        // model = Model("../obj/diablo3_pose/diablo3_pose.obj");
+        // model = Model("../obj/african_head/african_head.obj");
+        model = Model("../obj/diablo3_pose/diablo3_pose.obj");
     }
     for(int i = W*H; i >= 0; i--) zbuffer[i] = -1.1;
     // #pragma omp parallel for
