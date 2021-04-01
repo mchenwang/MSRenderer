@@ -43,7 +43,7 @@ void triangle(Point3d* points, double* zbuffer, TGAImage &image, TGAColor color)
     Point3i P;
     for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
         for (P[1]=bboxmin[1]; P[1]<=bboxmax[1]; P[1]++) {
-            Vector3d bc_screen  = barycentric(points[0], points[1], points[2], P);
+            Vector3d bc_screen  = barycentric(points[0], points[1], points[2], Point3d({P[0]+0.5,P[1]+0.5,0.}));
             if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
             // if (in_triangle(points, P))
             //     image.set(P[0], P[1], color);
@@ -84,7 +84,7 @@ void triangle2d(Point2i* points, TGAImage &image, TGAColor color, bool has_dir) 
             } else {
                 // if (in_triangle(points, P, has_dir)) image.set(P[0], P[1], color);
                 // 测试重心坐标，染色
-                if (in_triangle(points, P, has_dir)){
+                if (in_triangle(points, Point2d({P[0]+0.5,P[1]+0.5}), has_dir)){
                     Point3d A = Point3i({points[0][0], points[0][1], 0});
                     Point3d B = Point3i({points[1][0], points[1][1], 0});
                     Point3d C = Point3i({points[2][0], points[2][1], 0});
@@ -126,10 +126,8 @@ void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAIm
     Point3i P;
     for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
         for (P[1]=bboxmin[1]; P[1]<=bboxmax[1]; P[1]++) {
-            Vector3d bc_screen  = barycentric(points[0], points[1], points[2], P);
+            Vector3d bc_screen  = barycentric(points[0], points[1], points[2], Point3d({P[0]+0.5,P[1]+0.5,0.}));
             if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
-            // if (in_triangle(points, P))
-            //     image.set(P[0], P[1], color);
             double z = 0.;
             Point2d uv({0., 0.});
             for (int i=0; i<3; i++){
@@ -140,12 +138,40 @@ void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAIm
             if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
                 zbuffer[P[0]+P[1]*image.get_width()] = z;
                 image.set(P[0], P[1], texture.get(uv[0]*texture.get_width(), uv[1]*texture.get_height())*intensity);
-                // image.set(P[0], P[1], TGAColor(255,255,255)*intensity);
             }
         }
     }
 }
 
+void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader, TGAImage& image, double* zbuffer, const TGAImage& texture) {
+    double x_max = std::max(fragments[0].pos[0], std::max(fragments[1].pos[0], fragments[2].pos[0]));
+    double x_min = std::min(fragments[0].pos[0], std::min(fragments[1].pos[0], fragments[2].pos[0]));
+    double y_max = std::max(fragments[0].pos[1], std::max(fragments[1].pos[1], fragments[2].pos[1]));
+    double y_min = std::min(fragments[0].pos[1], std::min(fragments[1].pos[1], fragments[2].pos[1]));
+    x_max = std::ceil (x_max); x_max = std::min(x_max, (double)image.get_width());
+    x_min = std::floor(x_min); x_min = std::max(x_min, 0.);
+    y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height());
+    y_min = std::floor(y_min); y_min = std::max(y_min, 0.);
+    Point3i P;
+    for(P[0] = x_min; P[0] <= x_max; P[0]++) {
+        for(P[1] = y_min; P[1] <= y_max; P[1]++) {
+            Vector3d bc_screen  = barycentric(fragments[0].pos, fragments[1].pos, fragments[2].pos, Point3d({P[0]+0.5, P[1]+0.5, 0.}));
+            if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+            Fragment fragment;
+            fragment.pos = fragments[0].pos*bc_screen[0] + fragments[1].pos*bc_screen[1] + fragments[2].pos*bc_screen[2];
+            double z = fragment.pos[2];
+            fragment.uv = fragments[0].uv*bc_screen[0] + fragments[1].uv*bc_screen[1] + fragments[2].uv*bc_screen[2];
+            fragment.normal = fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2];
+            fragment.texture_color = texture.get(fragment.uv[0]*texture.get_width(), fragment.uv[1]*texture.get_height());
+            
+            if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
+                zbuffer[P[0]+P[1]*image.get_width()] = z;
+                image.set(P[0], P[1], shader->shading(fragment));
+                // image.set(P[0], P[1], fragment.texture_color);
+            }
+        }
+    }
+}
 
 constexpr double PI = 3.141592653;
 Eigen::Matrix4d model_transf(const double* scale, const double* thetas, const Vector3d& translate) {
@@ -186,7 +212,7 @@ Eigen::Matrix4d model_transf(const double* scale, const double* thetas, const Ve
                  0., 1., 0., translate[1],
                  0., 0., 1., translate[2],
                  0., 0., 0., 1.;
-    return Translate * Scale * Rotate;
+    return Translate * Rotate * Scale;
 }
 
 Eigen::Matrix4d view_transf(const Point3d& eye, const Vector3d& eye_up_dir, const Point3d& center) {

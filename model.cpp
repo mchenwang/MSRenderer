@@ -14,8 +14,6 @@ Model::Model(const std::string filename) {
     }
     std::string line;
     std::string _; // 过滤字符串
-    std::vector<Point2d> vts;
-    std::vector<Vector3d> vns;
     while(!in.eof()) {
         std::getline(in, line);
         std::istringstream iss(line);
@@ -27,14 +25,12 @@ Model::Model(const std::string filename) {
         else if(!line.compare(0, 3, "vt ")) {
             Point2d vt;
             iss >> _ >> vt[0] >> vt[1];
-            vts.push_back(vt);
-
             uvs.push_back(vt);
         }
         else if(!line.compare(0, 3, "vn ")) {
             Vector3d vn;
             iss >> _ >> vn[0] >> vn[1] >> vn[2];
-            vns.push_back(vn.normalize());
+            normals.push_back(vn);
         }
         else if(!line.compare(0, 2, "f ")) {
             int v, t, n, cnt = 0;

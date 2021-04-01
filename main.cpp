@@ -1,9 +1,10 @@
 #include "tgaimage.h"
 #include "vertex.h"
-#include <iostream>
-#include <limits>
 #include "model.h"
 #include "rasterization.h"
+#include "shader.h"
+#include <iostream>
+// #include <limits>
 
 constexpr int W = 1200;
 constexpr int H = 1200;
@@ -20,6 +21,7 @@ void draw_a_triangle() {
 }
 
 void draw_model() {
+    model = Model("../obj/african_head/african_head.obj");
     Vector3d light_dir({0., 0., -1.});
     const TGAColor color(255, 255, 255);
     for(int i = 0; i < model.faces_size(); i++) {
@@ -41,6 +43,7 @@ void draw_model() {
 }
 
 void draw_model_with_texture() {
+    model = Model("../obj/african_head/african_head.obj");
     Vector3d light_dir({0., 0., -1.});
     const TGAColor color(255, 255, 255);
     for(int i = 0; i < model.faces_size(); i++) {
@@ -63,12 +66,13 @@ void draw_model_with_texture() {
 }
 
 void draw_mvp() {
+    model = Model("../obj/african_head/african_head.obj");
     // const Point3d eye({0., 0.3, 2.});
     const Point3d eye({1., 0.5, 1.});
     const Vector3d eye_up_dir({0., 1., 0.});
     const Point3d center({0., 0., 0.});
-    const double scale[] = {1., 1., 1.};
-    const double thetas[] = {0., 0., -90.};
+    const double scale[] = {1, 1., 1.};
+    const double thetas[] = {0., 0., 0.};
     const Vector3d translate({0., 0., 0.});
 
     Eigen::Matrix4d mvp = projection_transf(90., 1.0, -1., -3.) * view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
@@ -97,21 +101,49 @@ void draw_mvp() {
     }
 }
 
-int main(int argc, char** argv)
-{
-    if (argc == 2) {
-        model = Model(argv[1]);
-    } else {
-        // model = Model("../obj/floor.obj");
-        model = Model("../obj/african_head/african_head.obj");
-        // model = Model("../obj/diablo3_pose/diablo3_pose.obj");
+void draw_with_shading() {
+    // model = Model("../obj/african_head/african_head.obj");
+    model = Model("../obj/diablo3_pose/diablo3_pose.obj");
+    // model = Model("../obj/floor.obj");
+    // const Point3d eye({0., 0.3, 2.});
+    const Point3d eye({0.7, 0.9, 1.4});
+    const Vector3d eye_up_dir({0., 1., 0.});
+    const Point3d center({0., 0., 0.});
+    const double scale[] = {1.3, 1.3, 1.3};
+    const double thetas[] = {0., -10., 0.};
+    const Vector3d translate({0., 0., 0.});
+
+    Eigen::Matrix4d mvp = projection_transf(90., 1.0, -1., -3.) * view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
+    Point3d light_pos({1200., 1200., 400.});
+
+    // double light_intensity = 6000.;
+    std::vector<Light> lights{{Point3d({1000., 800., 400.}), 2000},
+                              {Point3d({0., 1200., 200.}), 500}};
+
+    double amb_light_intensity = 15.;
+    PhongShader* phong_shader = new PhongShader(eye, amb_light_intensity, lights);
+    for(int i = 0; i < model.faces_size(); i++) {
+        Fragment fragments[3];
+        for(int j = 0; j < 3; j++) {
+            Point3d p = model.get_vertex(i, j);
+            Eigen::Vector4d temp = mvp * Eigen::Vector4d(p[0], p[1], p[2], 1.);
+            fragments[j].pos = Vector3d({(temp[0]/temp[3]+1)*W*0.5, (temp[1]/temp[3]+1)*H*0.5, temp[2]/temp[3]});
+            fragments[j].normal = model.get_normal(i, j).normalized();
+            fragments[j].uv  = model.get_uv(i, j);
+        }
+        triangle_with_Phong(fragments, phong_shader, image, zbuffer, model.get_diffusemap());
     }
+}
+
+int main()
+{
     for(int i = W*H; i >= 0; i--) zbuffer[i] = -1.1;
     // #pragma omp parallel for
+    // draw_a_triangle();
     // draw_model();
     // draw_model_with_texture();
-    draw_mvp();
-    // image.flip_vertically();
+    // draw_mvp();
+    draw_with_shading();
     image.write_tga_file("output.tga");
     return 0;
 }

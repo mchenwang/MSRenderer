@@ -20,6 +20,19 @@ namespace MSRender {
             for(size_t i = 0; i < n; i++) this->data[i] = (T)p.data[i];
         }
         Point<T, n>& operator=(const Point<T, n>& p) noexcept { data = p.data; return *this; }
+        Point<T, n> operator*(const double x) const {
+            Point<T, n> ret;
+            for(size_t i = 0; i < n; i++) ret[i] = (*this)[i] * x;
+            return ret;
+        }
+        Point<T, n> operator+(const Point<T, n>& x) const {
+            Point<T, n> ret;
+            for(size_t i = 0; i < n; i++) ret[i] = (*this)[i] + x[i];
+            return ret;
+        }
+        void operator+=(const Point<T, n>& x) {
+            for(size_t i = 0; i < n; i++) (*this)[i] += x[i];
+        }
 
         T operator[](const size_t i) const { return data.at(i); }
         T& operator[](const size_t i) { return data.at(i); }
@@ -66,7 +79,7 @@ namespace MSRender {
             for(size_t i = 0; i < n; i++) ret += (*this)[i] * x[i];
             return ret;
         }
-        Vector<T, n> operator/(const T& x) {
+        Vector<T, n> operator/(const T& x) const {
             Vector<T, n> ret;
             for(size_t i = 0; i < n; i++) ret[i] = (*this)[i] / x;
             return ret;
@@ -74,14 +87,22 @@ namespace MSRender {
         void operator/=(const T& x) {
             for(size_t i = 0; i < n; i++) (*this)[i] /= x;
         }
-        T norm2() { return (*this)*(*this); }
-        T norm() { return sqrt((*this)*(*this)); }
+        Vector<T, n> operator*(const T& x) const {
+            Vector<T, n> ret;
+            for(size_t i = 0; i < n; i++) ret[i] = (*this)[i] * x;
+            return ret;
+        }
+        void operator*=(const T& x) {
+            for(size_t i = 0; i < n; i++) (*this)[i] *= x;
+        }
+        T norm2() const { return (*this)*(*this); }
+        T norm() const { return sqrt((*this)*(*this)); }
         Vector<T, n>& normalize() {
             (*this) /= norm();
             return *this;
         }
         Vector<T, n> normalized() const {
-            return (*this)/norm();
+            return (*this) / norm();
         }
         
         Vector<T, n> operator+(const Vector<T, n>& b) const {

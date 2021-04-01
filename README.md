@@ -215,6 +215,8 @@ if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
 image.set(P[0], P[1], color);
 ```
 
+> 实际上，算一个像素点是否在三角形内，往往取像素点的中心，即在计算时坐标 (x,y) 应该为 (P[0]+0.5,P[1]+0.5)
+
 ### Step 3 绘制模型
 
 obj 文件中模型由很多三角形组成，因此，只要分别画出每个三角形，即可绘制出模型。当然其中涉及到坐标从三维空间到二维屏幕的映射。
@@ -417,6 +419,43 @@ world_coords[j] = Point3d({temp[0]/temp[3], temp[1]/temp[3], temp[2]/temp[3]});
 
 <img src="/img/mvp2.jpg" style="width:200px;" />
 
+### Step 5 光照模型
+
+实际上，之前的步骤中也使用了光照，不过是平行光。
+
+接下来的光照模型（Blinn-Phong 模型）将会使用点光源和全局光。
+
+Blinn-Phong 模型以及 Phong 模型根据经验，认为照在物体上的光由三部分组成：全局光照、漫反射光、镜面反射光。
+
+全局光照是为了保证模型在无光处不至于全黑，只需要设定一个全局光照强度和一个全局光照系数即可：
+
+```c++
+la = k_a * amb_light_intensity;
+```
+
+镜面反射光决定了物体的高光，而根据经验来看，当光线可以通过反射，到达人眼时，即可看到高光，而反射光与视线的夹角越小，高光强度越大，光强随光源距离的平方衰减：
+
+```c++
+ls = ks * light.intensity / r2 * cos(theta);
+```
+
+其中 `theta` 的值即为反射光线与视线的夹角，也等于该点的法线与半程向量（视线+光线）的夹角，同时为了让高光保持在一个小区域，可以给 cos 加个指数，然后公式即为：
+
+```c++
+ls = ks*light.intensity / r2 * (fragment.normal * (light_dir + eye_dir).normalized())^p;
+```
+
+漫反射系数在有纹理的情况下，即为纹理的颜色，公式如下：
+
+```c++
+ld = kd * light.intensity / r2 * (fragment.normal * light_dir.normalized());
+```
+
+最后结果为三个部分的累加，颜色即为结果再乘 255 将数据映射到颜色范围中。可看到结果如下：
+
+<img src="/img/BPhong.jpg" style="width:100px;"><img src="/img/BPhong2.jpg" style="width:100px;">
+
 ## TODO
 
-- Phong-Shading
+- tangent space normal mapping
+
