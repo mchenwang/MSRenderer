@@ -6,13 +6,15 @@
 - Win10 + MinGW
 
 ```sh
-git https://github.com/miawua/SoftwareRendering.git
+git clone https://github.com/miawua/SoftwareRendering.git
 cd SoftwareRendering
 mkdir build
 cd build
 cmake -G "MinGW Makefiles" ..
-mingw32-make && rendering.exe
+mingw32-make && rendering.exe && start output.tga
 ```
+
+- Windows 系统下查看 tga 格式的图片可使用软件 [IrfanView](https://www.irfanview.com/)
 
 ## 过程记录
 
