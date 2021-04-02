@@ -9,7 +9,7 @@ void triangle2d(MSRender::Point2i*, TGAImage&, TGAColor, bool has_dir = false);
 void triangle(MSRender::Point3d*, double* zbuffer, TGAImage&, TGAColor);
 void triangle_with_texture(MSRender::Point3d*, MSRender::Point2d*, double* zbuffer, TGAImage&, const TGAImage&, double);
 void draw_zbuffer(double* zbuffer, TGAImage&, TGAColor);
-void triangle_with_Phong(MSRender::Fragment*, MSRender::Shader*, TGAImage&, double*, const TGAImage&); // Blinn-Phong
+void triangle_with_Phong(MSRender::Fragment*, MSRender::Shader*, TGAImage&, double*, const TGAImage&, const TGAImage&); // Blinn-Phong
 
 // get mvp
 Eigen::Matrix4d model_transf(const double* scale, const double* thetas, const MSRender::Vector3d& translate);

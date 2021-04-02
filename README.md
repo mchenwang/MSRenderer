@@ -455,6 +455,23 @@ ld = kd * light.intensity / r2 * (fragment.normal * light_dir.normalized());
 
 <img src="/img/BPhong.jpg" style="width:100px;"><img src="/img/BPhong2.jpg" style="width:100px;">
 
+另外，我们增加一个地板试试看：
+
+<img src="/img/perspectiveerror.jpg" style="width:100px;">
+
+这里似乎出现了问题，地板上的纹理并不合理，这里是因为在设置纹理时，我们使用屏幕空间的坐标对点及其属性进行插值，而根据第四步中得到的 MVP 变换后的点坐标在 x 和 y 轴坐标上是有线性关系的，而在 z 轴上是对 1/z 有线性关系，因此进行线性插值时，会出现错误，因此需要矫正：透视矫正。根据公式：
+
+```c++
+double zt = bc_screen[0] / fragments[0].w + bc_screen[1] / fragments[1].w + bc_screen[2] / fragments[2].w;
+alpha = bc_screen[0] / (zt*fragments[0].w);
+beta = bc_screen[1] / (zt*fragments[1].w);
+gamma = bc_screen[2] / (zt*fragments[2].w);
+```
+
+结果如下：
+
+<img src="/img/perspectivecorrect.jpg" style="width:100px;">
+
 ## TODO
 
 - tangent space normal mapping

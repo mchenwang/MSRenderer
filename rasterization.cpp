@@ -143,11 +143,11 @@ void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAIm
     }
 }
 
-void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader, TGAImage& image, double* zbuffer, const TGAImage& texture) {
-    double x_max = std::max(fragments[0].pos[0], std::max(fragments[1].pos[0], fragments[2].pos[0]));
-    double x_min = std::min(fragments[0].pos[0], std::min(fragments[1].pos[0], fragments[2].pos[0]));
-    double y_max = std::max(fragments[0].pos[1], std::max(fragments[1].pos[1], fragments[2].pos[1]));
-    double y_min = std::min(fragments[0].pos[1], std::min(fragments[1].pos[1], fragments[2].pos[1]));
+void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader, TGAImage& image, double* zbuffer, const TGAImage& texture, const TGAImage& specular) {
+    double x_max = std::max(fragments[0].screen_pos[0], std::max(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
+    double x_min = std::min(fragments[0].screen_pos[0], std::min(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
+    double y_max = std::max(fragments[0].screen_pos[1], std::max(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
+    double y_min = std::min(fragments[0].screen_pos[1], std::min(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
     x_max = std::ceil (x_max); x_max = std::min(x_max, (double)image.get_width());
     x_min = std::floor(x_min); x_min = std::max(x_min, 0.);
     y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height());
@@ -155,19 +155,28 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
     Point3i P;
     for(P[0] = x_min; P[0] <= x_max; P[0]++) {
         for(P[1] = y_min; P[1] <= y_max; P[1]++) {
-            Vector3d bc_screen  = barycentric(fragments[0].pos, fragments[1].pos, fragments[2].pos, Point3d({P[0]+0.5, P[1]+0.5, 0.}));
+            Vector3d bc_screen  = barycentric(fragments[0].screen_pos, fragments[1].screen_pos, fragments[2].screen_pos, Point3d({P[0]+0.5, P[1]+0.5, 0.}));
             if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
-            Fragment fragment;
-            fragment.pos = fragments[0].pos*bc_screen[0] + fragments[1].pos*bc_screen[1] + fragments[2].pos*bc_screen[2];
-            double z = fragment.pos[2];
-            fragment.uv = fragments[0].uv*bc_screen[0] + fragments[1].uv*bc_screen[1] + fragments[2].uv*bc_screen[2];
-            fragment.normal = fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2];
-            fragment.texture_color = texture.get(fragment.uv[0]*texture.get_width(), fragment.uv[1]*texture.get_height());
             
+            double zt = bc_screen[0] / fragments[0].w + bc_screen[1] / fragments[1].w + bc_screen[2] / fragments[2].w;
+            // zt = 1. / zt;
+            bc_screen[0] = bc_screen[0] / (zt*fragments[0].w);
+            bc_screen[1] = bc_screen[1] / (zt*fragments[1].w);
+            bc_screen[2] = bc_screen[2] / (zt*fragments[2].w);
+            
+            Fragment fragment;
+            fragment.world_pos = fragments[0].world_pos*bc_screen[0] + fragments[1].world_pos*bc_screen[1] + fragments[2].world_pos*bc_screen[2];
+            fragment.uv = fragments[0].uv*bc_screen[0] + fragments[1].uv*bc_screen[1] + fragments[2].uv*bc_screen[2];
+            
+            fragment.normal = fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2];
+            fragment.normal.normalize();
+            fragment.texture_color = texture.get(fragment.uv[0]*texture.get_width(), fragment.uv[1]*texture.get_height());
+            fragment.specular = specular.get(fragment.uv[0]*specular.get_width(), fragment.uv[1]*specular.get_height());
+            
+            double z = fragment.world_pos[2];
             if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
                 zbuffer[P[0]+P[1]*image.get_width()] = z;
                 image.set(P[0], P[1], shader->shading(fragment));
-                // image.set(P[0], P[1], fragment.texture_color);
             }
         }
     }
@@ -231,6 +240,11 @@ Eigen::Matrix4d view_transf(const Point3d& eye, const Vector3d& eye_up_dir, cons
          y[0], y[1], y[2], 0.,
          z[0], z[1], z[2], 0.,
          0.  , 0.  , 0.  , 1.;
+    // auto xs = R*T;
+    // for(int i=0;i<4;i++){
+    //     for(int j=0;j<4;j++) std::cout<<R(i,j)<<" ";
+    //     std::cout<<"\n";
+    // }
     return R*T;
 }
 

@@ -52,7 +52,7 @@ Model::Model(const std::string filename) {
     in.close();
     load_texture(filename, "_diffuse.tga",    diffusemap_);
     // load_texture(filename, "_nm_tangent.tga", normalmap_);
-    // load_texture(filename, "_spec.tga",       specularmap_);
+    load_texture(filename, "_spec.tga",       specularmap_);
 }
 
 int Model::vertexs_size() const {
