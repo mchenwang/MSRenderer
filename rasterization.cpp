@@ -159,7 +159,8 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
             if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
             
             double zt = bc_screen[0] / fragments[0].w + bc_screen[1] / fragments[1].w + bc_screen[2] / fragments[2].w;
-            // zt = 1. / zt;
+            double z = -zt;
+            // 透视修正
             bc_screen[0] = bc_screen[0] / (zt*fragments[0].w);
             bc_screen[1] = bc_screen[1] / (zt*fragments[1].w);
             bc_screen[2] = bc_screen[2] / (zt*fragments[2].w);
@@ -171,9 +172,9 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
             fragment.normal = fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2];
             fragment.normal.normalize();
             fragment.texture_color = texture.get(fragment.uv[0]*texture.get_width(), fragment.uv[1]*texture.get_height());
-            fragment.specular = specular.get(fragment.uv[0]*specular.get_width(), fragment.uv[1]*specular.get_height());
+            fragment.specular = specular.get(fragment.uv[0]*specular.get_width(), fragment.uv[1]*specular.get_height())[0];
             
-            double z = fragment.world_pos[2];
+            // z = fragment.world_pos[2];
             if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
                 zbuffer[P[0]+P[1]*image.get_width()] = z;
                 image.set(P[0], P[1], shader->shading(fragment));

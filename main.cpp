@@ -106,17 +106,25 @@ void draw_with_shading(std::vector<std::string> models) {
     const Vector3d eye_up_dir({0., 1., 0.});
     const Point3d eye({0.7, 1, 1.9});
     // const Point3d eye({0., 2., 0.});
-    // const Vector3d eye_up_dir({0., 0., -1.});
+    // const Vector3d eye_up_dir({0., 0., -2.});
     const Point3d center({0., 0., 0.});
     // const double scale[] = {1.3, 1.3, 1.3};
     const double scale[] = {1., 1., 1.};
     const double thetas[] = {0., 0., 0.};
     const Vector3d translate({0., 0., 0.});
 
-    Eigen::Matrix4d mvp = projection_transf(90., 1.0, -1., -3.) * view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
+    const double eye_fov = 90.;
+    const double aspect_ratio = 1.0;
+    const double z_near = 0.1;
+    const double z_far  = 5.;
+
+    Eigen::Matrix4d mvp = projection_transf(eye_fov, aspect_ratio, -z_near, -z_far) * view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
     // double light_intensity = 6000.;
-    std::vector<Light> lights{{Point3d({10., 10., 10.}), 1},
-                              {Point3d({-10., 10., 10.}), 1}};
+    std::vector<Light> lights{{Point3d({10., 10., 10.}), 1.8},
+                              {Point3d({-10., 10., 10.}), 0.5}};
+    // std::vector<Light> lights{{Point3d({0., 4., 1.}), 0.01},
+    //                           {Point3d({0., 4., 0.}), 0.03}};
+    // std::vector<Light> lights{{Point3d({0., 2., 0.}), 0.01}};
 
     double amb_light_intensity = 15.;
     PhongShader* phong_shader = new PhongShader(eye, amb_light_intensity, lights);
@@ -142,14 +150,16 @@ void draw_with_shading(std::vector<std::string> models) {
 
 int main()
 {
-    for(int i = W*H; i >= 0; i--) zbuffer[i] = -1000000.1;
+    for(int i = W*H; i >= 0; i--) zbuffer[i] = -1.1;
     // #pragma omp parallel for
     // draw_a_triangle();
     // draw_model();
     // draw_model_with_texture();
     // draw_mvp();
-    // std::vector<std::string> models = {"../obj/african_head/african_head.obj","../obj/floor.obj"};
-    std::vector<std::string> models = {"../obj/diablo3_pose/diablo3_pose.obj","../obj/floor.obj"};
+    // std::vector<std::string> models = {"../obj/african_head/african_head.obj"};
+    // std::vector<std::string> models = {"../obj/floor.obj","../obj/african_head/african_head.obj"};
+    std::vector<std::string> models = {"../obj/african_head/african_head_eye_inner.obj","../obj/african_head/african_head.obj","../obj/floor.obj"};
+    // std::vector<std::string> models = {"../obj/diablo3_pose/diablo3_pose.obj","../obj/floor.obj"};
     // std::vector<std::string> models = {"../obj/floor.obj"};
     draw_with_shading(models);
     // draw_zbuffer(zbuffer, image, TGAColor(255,255,255));
