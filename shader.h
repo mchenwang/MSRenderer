@@ -14,7 +14,7 @@ namespace MSRender {
         Vector3d normal;
         Point2d uv;
         TGAColor texture_color;
-        TGAColor specular;
+        double specular; // 黑白只有一个值
     };
     struct Light {
         Point3d pos;
@@ -41,7 +41,7 @@ namespace MSRender {
         // TGAColor kd; // 漫反射系数，texture
     public:
         ~PhongShader() = default;
-        PhongShader(Point3d ep, double ali, std::vector<Light> ls, int _p=512, double ka_=0.005/*, double ks_=0.8*/)
+        PhongShader(Point3d ep, double ali, std::vector<Light> ls, int _p=128, double ka_=0.005/*, double ks_=0.7*/)
         : Shader(ep, ali, ls), p(_p), ka(ka_)/*, ks(ks_)*/ {}
         TGAColor shading(const Fragment& fragment) override {
             Point3d result({0.,0.,0.});
@@ -50,9 +50,8 @@ namespace MSRender {
             result += la;
 
             TGAColor kd = fragment.texture_color;
-            // TGAColor ks = fragment.specular;
-            TGAColor ks(255, 255, 255);
-                    
+            double ks = fragment.specular;
+
             for(auto& light: lights) {
                 Vector3d light_dir = light.pos - fragment.world_pos;
                 Vector3d eye_dir = eye_pos - fragment.world_pos;
@@ -60,23 +59,16 @@ namespace MSRender {
 
                 Vector3d ld({kd[0]*light.intensity/r2, kd[1]*light.intensity/r2, kd[2]*light.intensity/r2});
                 ld *= std::max(0., fragment.normal * light_dir.normalized());
-                Vector3d ls({ks[0]*light.intensity/r2, ks[1]*light.intensity/r2, ks[2]*light.intensity/r2});
-                // Vector3d ls({(1.-kd[0])*light.intensity/r2, (1.-kd[1])*light.intensity/r2, (1.-kd[2])*light.intensity/r2});
+                Vector3d ls({ks*light.intensity/r2, ks*light.intensity/r2, ks*light.intensity/r2});
                 ls *= std::pow(std::max(0., fragment.normal * (light_dir + eye_dir).normalized()), p);
                 result += ld + ls;
             }
             
-            // std::cout<<ld[0]<<" "<<ld[1]<<" "<<ld[2]<<"\n";
             TGAColor result_color(
                 (std::uint8_t) std::min(255., result[0]*255.),
                 (std::uint8_t) std::min(255., result[1]*255.),
                 (std::uint8_t) std::min(255., result[2]*255.));
-            // TGAColor result_color(
-            //     (std::uint8_t) std::min(255., result[2]*255.),
-            //     (std::uint8_t) std::min(255., result[1]*255.),
-            //     (std::uint8_t) std::min(255., result[0]*255.));
             
-            // std::cout<<(int)result_color[0]<<" "<<(int)result_color[1]<<" "<<(int)result_color[2]<<"\n";
             return result_color;
         }
     };
