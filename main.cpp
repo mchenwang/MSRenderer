@@ -24,7 +24,7 @@ void draw_model() {
     model = Model("../obj/african_head/african_head.obj");
     Vector3d light_dir({0., 0., -1.});
     const TGAColor color(255, 255, 255);
-    for(int i = 0; i < model.faces_size(); i++) {
+    for(size_t i = 0; i < model.faces_size(); i++) {
         Point3d screen_coords[3];
         Point3d world_coords[3];
         for(int j = 0; j < 3; j++) {
@@ -46,7 +46,7 @@ void draw_model_with_texture() {
     model = Model("../obj/african_head/african_head.obj");
     Vector3d light_dir({0., 0., -1.});
     const TGAColor color(255, 255, 255);
-    for(int i = 0; i < model.faces_size(); i++) {
+    for(size_t i = 0; i < model.faces_size(); i++) {
         Point3d screen_coords[3];
         Point3d world_coords[3];
         Point2d uvs[3];
@@ -79,7 +79,7 @@ void draw_mvp() {
     Vector3d light_dir({0., 0., -1.});
     light_dir.normalize();
     const TGAColor color(255, 255, 255);
-    for(int i = 0; i < model.faces_size(); i++) {
+    for(size_t i = 0; i < model.faces_size(); i++) {
         Point3d screen_coords[3];
         Point3d world_coords[3];
         Point2d uvs[3];
@@ -119,20 +119,20 @@ void draw_with_shading(std::vector<std::string> models) {
     const double z_far  = 5.;
 
     Eigen::Matrix4d mvp = projection_transf(eye_fov, aspect_ratio, -z_near, -z_far) * view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
+    // Eigen::Matrix4d vp = view_transf(eye, eye_up_dir, center) * model_transf(scale, thetas, translate);
     // double light_intensity = 6000.;
-    std::vector<Light> lights{{Point3d({10., 10., 10.}), 1.8},
-                              {Point3d({-10., 10., 10.}), 0.5}};
-    // std::vector<Light> lights{{Point3d({0., 4., 1.}), 0.01},
-    //                           {Point3d({0., 4., 0.}), 0.03}};
+    std::vector<Light> lights{{Point3d({-1., 2., 1.}), 0.05},
+                              {Point3d({3., 0.5, 2.}), 0.05}};
     // std::vector<Light> lights{{Point3d({0., 2., 0.}), 0.01}};
 
     double amb_light_intensity = 15.;
     PhongShader* phong_shader = new PhongShader(eye, amb_light_intensity, lights);
+
     for(auto& model_path: models) {
         model = Model(model_path);
-        for(int i = 0; i < model.faces_size(); i++) {
+        for(size_t i = 0; i < model.faces_size(); i++) {
             Fragment fragments[3];
-            for(int j = 0; j < 3; j++) {
+            for(size_t j = 0; j < 3; j++) {
                 Point3d p = model.get_vertex(i, j);
                 fragments[j].world_pos = p;
                 Eigen::Vector4d temp = mvp * Eigen::Vector4d(p[0], p[1], p[2], 1.);
@@ -141,7 +141,7 @@ void draw_with_shading(std::vector<std::string> models) {
                 fragments[j].normal = model.get_normal(i, j).normalized();
                 fragments[j].uv  = model.get_uv(i, j);
             }
-            triangle_with_Phong(fragments, phong_shader, image, zbuffer, model.get_diffusemap(), model.get_specularmap());
+            triangle_with_Phong(fragments, phong_shader, image, zbuffer, model);
         }
     }
     delete phong_shader;
@@ -158,7 +158,9 @@ int main()
     // draw_mvp();
     // std::vector<std::string> models = {"../obj/african_head/african_head.obj"};
     // std::vector<std::string> models = {"../obj/floor.obj","../obj/african_head/african_head.obj"};
-    std::vector<std::string> models = {"../obj/african_head/african_head_eye_inner.obj","../obj/african_head/african_head.obj","../obj/floor.obj"};
+    std::vector<std::string> models = {"../obj/african_head/african_head_eye_inner.obj",
+    "../obj/african_head/african_head.obj",
+    "../obj/floor.obj"};
     // std::vector<std::string> models = {"../obj/diablo3_pose/diablo3_pose.obj","../obj/floor.obj"};
     // std::vector<std::string> models = {"../obj/floor.obj"};
     draw_with_shading(models);

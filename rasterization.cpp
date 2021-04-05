@@ -143,7 +143,7 @@ void triangle_with_texture(Point3d* points, Point2d* uvs, double* zbuffer, TGAIm
     }
 }
 
-void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader, TGAImage& image, double* zbuffer, const TGAImage& texture, const TGAImage& specular) {
+void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader, TGAImage& image, double* zbuffer, const Model& model) {
     double x_max = std::max(fragments[0].screen_pos[0], std::max(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
     double x_min = std::min(fragments[0].screen_pos[0], std::min(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
     double y_max = std::max(fragments[0].screen_pos[1], std::max(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
@@ -152,6 +152,26 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
     x_min = std::floor(x_min); x_min = std::max(x_min, 0.);
     y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height());
     y_min = std::floor(y_min); y_min = std::max(y_min, 0.);
+
+    // Vector3d E1 = fragments[1].world_pos - fragments[0].world_pos;
+    // Vector3d E2 = fragments[2].world_pos - fragments[0].world_pos;
+    // double  du1 = fragments[1].uv[0] - fragments[0].uv[0];
+    // double  dv1 = fragments[1].uv[1] - fragments[0].uv[1];
+    // double  du2 = fragments[2].uv[0] - fragments[0].uv[0];
+    // double  dv2 = fragments[2].uv[1] - fragments[0].uv[1];
+    // double temp = dv2 * du1 - dv1 * du2;
+    // Vector3d T = (E1 * dv2 - E2 * dv1) / temp;
+    // Vector3d B = (E2 * du1 - E1 * du2) / temp;
+    // Vector3d N = cross(B, T);
+    // Eigen::Vector4d tempT = model.model_transf*Eigen::Vector4d(T[0],T[1],T[2],1.);
+    // Eigen::Vector4d tempB = model.model_transf*Eigen::Vector4d(B[0],B[1],B[2],1.);
+    // Eigen::Vector4d tempN = model.model_transf*Eigen::Vector4d(N[0],N[1],N[2],1.);
+    // T = Vector3d({tempT(0)/tempT(3), tempT(1)/tempT(3), tempT(2)/tempT(3)});
+    // B = Vector3d({tempB(0)/tempB(3), tempB(1)/tempB(3), tempB(2)/tempB(3)});
+    // N = Vector3d({tempN(0)/tempN(3), tempN(1)/tempN(3), tempN(2)/tempN(3)});
+    // T.normalize();
+    // B.normalize();
+    // N.normalize();
     Point3i P;
     for(P[0] = x_min; P[0] <= x_max; P[0]++) {
         for(P[1] = y_min; P[1] <= y_max; P[1]++) {
@@ -169,12 +189,28 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
             fragment.world_pos = fragments[0].world_pos*bc_screen[0] + fragments[1].world_pos*bc_screen[1] + fragments[2].world_pos*bc_screen[2];
             fragment.uv = fragments[0].uv*bc_screen[0] + fragments[1].uv*bc_screen[1] + fragments[2].uv*bc_screen[2];
             
-            fragment.normal = fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2];
-            fragment.normal.normalize();
-            fragment.texture_color = texture.get(fragment.uv[0]*texture.get_width(), fragment.uv[1]*texture.get_height());
-            fragment.specular = specular.get(fragment.uv[0]*specular.get_width(), fragment.uv[1]*specular.get_height())[0];
+            if(model.has_normal_map()){
+                // if(Model::nm_is_in_tangent){
+                //     // fragment.normal = fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2];
+                //     // fragment.normal.normalize();
+                //     // Vector3d nm_tan = model.get_normal_with_map(fragment.uv[0],fragment.uv[1]).normalized();
+                //     // fragment.normal = Vector3d({nm_tan[0]*T[0]+nm_tan[1]*B[0]+nm_tan[2]*N[0],
+                //     //                             nm_tan[0]*T[1]+nm_tan[1]*B[1]+nm_tan[2]*N[1],
+                //     //                             nm_tan[0]*T[2]+nm_tan[1]*B[2]+nm_tan[2]*N[2]});
+                //     // fragment.normal.normalize();
+                // }
+                // else 
+                fragment.normal = model.get_normal_with_map(fragment.uv[0],fragment.uv[1]).normalized();
+            }
+            else fragment.normal = (fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2]).normalized();
+            // std::cout<<fragment.normal[0]<<" "<<fragment.normal[1]<<" "<<fragment.normal[2]<<"\n";
+            if(model.has_diffuse_map())
+                fragment.texture_color = model.get_diffuse(fragment.uv[0],fragment.uv[1]);
+            else fragment.texture_color = TGAColor(0, 0, 0);
+            if(model.has_specular_map())
+                fragment.specular = model.get_specular(fragment.uv[0], fragment.uv[1]);
+            else fragment.specular = 0.;
             
-            // z = fragment.world_pos[2];
             if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
                 zbuffer[P[0]+P[1]*image.get_width()] = z;
                 image.set(P[0], P[1], shader->shading(fragment));

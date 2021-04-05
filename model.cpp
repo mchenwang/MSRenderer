@@ -5,6 +5,8 @@
 
 using namespace MSRender;
 
+bool Model::nm_is_in_tangent = true;
+
 Model::Model(const std::string filename) {
     std::ifstream in;
     in.open(filename, std::ifstream::in);
@@ -50,52 +52,69 @@ Model::Model(const std::string filename) {
         }
     }
     in.close();
-    load_texture(filename, "_diffuse.tga",    diffusemap_);
-    // load_texture(filename, "_nm_tangent.tga", normalmap_);
-    load_texture(filename, "_spec.tga",       specularmap_);
+    has_diffusemap = load_texture(filename, "_diffuse.tga",    diffusemap_);
+    has_normalmap = load_texture(filename, (Model::nm_is_in_tangent? "_nm_tangent.tga":"_nm.tga"), normalmap_);
+    has_specularmap = load_texture(filename, "_spec.tga",       specularmap_);
 }
 
-int Model::vertexs_size() const {
+size_t Model::vertexs_size() const {
     return vertices.size();
 }
 
-int Model::faces_size() const {
+size_t Model::faces_size() const {
     return face_vertices.size() / 3;
 }
 
-Point3d Model::get_vertex(const int iface, const int nthvert) const {
+Point3d Model::get_vertex(const size_t iface, const size_t nthvert) const {
+    if(iface*3+nthvert >= face_normal.size()) return Point3d({0., 0., 0.});
     return vertices[face_vertices[iface*3+nthvert]];
 }
 
-void Model::load_texture(std::string filename, const std::string suffix, TGAImage &img) {
+bool Model::load_texture(std::string filename, const std::string suffix, TGAImage &img) {
     size_t dot = filename.find_last_of(".");
-    if (dot==std::string::npos) return;
+    if (dot==std::string::npos) return false;
     std::string texfile = filename.substr(0,dot) + suffix;
-    std::cerr << "texture file " << texfile << " loading " << (img.read_tga_file(texfile.c_str()) ? "ok" : "failed") << std::endl;
+    bool flag = img.read_tga_file(texfile.c_str());
+    std::cerr << "texture file " << texfile << " loading " << (flag ? "ok" : "failed") << std::endl;
     img.flip_vertically();
+    return flag;
 }
 
-TGAColor Model::get_diffuse(const Point2d &uvf) const {
-    return diffusemap_.get(uvf[0]*diffusemap_.get_width(), uvf[1]*diffusemap_.get_height());
-}
-
-Vector3d Model::get_normal(const Point2d &uvf) const {
+Vector3d Model::get_normal_with_map(const Point2d &uvf) const {
     TGAColor c = normalmap_.get(uvf[0]*normalmap_.get_width(), uvf[1]*normalmap_.get_height());
     Vector3d res;
     for (int i=0; i<3; i++)
-        res[2-i] = c[i]/255.*2 - 1;
+        res[i] = (double)c[i]/255.*2 - 1;
     return res;
 }
-
+TGAColor Model::get_diffuse(const Point2d &uvf) const {
+    return diffusemap_.get(uvf[0]*diffusemap_.get_width(), uvf[1]*diffusemap_.get_height());
+}
 double Model::get_specular(const Point2d &uvf) const {
     return specularmap_.get(uvf[0]*specularmap_.get_width(), uvf[1]*specularmap_.get_height())[0];
 }
 
-Point2d Model::get_uv(const int iface, const int nthvert) const {
+Vector3d Model::get_normal_with_map(const double uv0, const double uv1) const {
+    TGAColor c = normalmap_.get(uv0*normalmap_.get_width(), uv1*normalmap_.get_height());
+    Vector3d res;
+    for (int i=0; i<3; i++)
+        res[i] = (double)c[i]/255.*2 - 1;
+    return res;
+}
+TGAColor Model::get_diffuse(const double uv0, const double uv1) const {
+    return diffusemap_.get(uv0*diffusemap_.get_width(), uv1*diffusemap_.get_height());
+}
+double Model::get_specular(const double uv0, const double uv1) const {
+    return specularmap_.get(uv0*specularmap_.get_width(), uv1*specularmap_.get_height())[0];
+}
+
+Point2d Model::get_uv(const size_t iface, const size_t nthvert) const {
+    if(iface*3+nthvert >= face_normal.size()) return Point2d({0., 0.});
     return uvs[face_uvs[iface*3+nthvert]];
 }
 
-Vector3d Model::get_normal(const int iface, const int nthvert) const {
+Vector3d Model::get_normal(const size_t iface, const size_t nthvert) const {
+    if(iface*3+nthvert >= face_normal.size()) return Vector3d({0., 0., 0.});
     return normals[face_normal[iface*3+nthvert]];
 }
 

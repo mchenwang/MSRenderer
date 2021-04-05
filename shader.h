@@ -9,6 +9,7 @@ namespace MSRender {
 
     struct Fragment {
         Point3d screen_pos;
+        Point3d p;
         double w;
         Point3d world_pos;
         Vector3d normal;

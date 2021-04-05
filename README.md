@@ -482,9 +482,19 @@ gamma = bc_screen[2] / (zt*fragments[2].w);
 
 <img src="/img/spec.png" style="width:100px;"><img src="/img/spec2.png" style="width:100px;">
 
+### Step 6 法线贴图
+
+物体的表面往往不会很光滑，会有凹凸不平的地方，表现这种表面的方法可以是增加三角形的数量，让表达更精确，但这也增加了数据的存储和计算量，而另一种方法是利用法线，法线可以表达包含该点的微小平面的方向，使用法线贴图，在渲染时改变该点的法线方向。
+
+而法线贴图有两种，第一种是看起来比较花的图片，即每个像素点的 RGB 值代表着对应点的法线向量，可以直接替换原本的法线，得到结果如下：
+
+<img src="/img/nm.jpg" style="width:200px;">
+
+TODO: 切线空间的法线贴图
+
 
 
 ## TODO
 
-- tangent space normal mapping
+- shadow
 
