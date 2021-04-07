@@ -383,7 +383,7 @@ persp_to_ortho << n, 0., 0., 0.,
                   0., n, 0., 0.,
                   0., 0., (n+f), -n*f,
                   0., 0., 1., 0.;
-return translate * scale * persp_to_ortho;
+return scale * translate * persp_to_ortho;
 ```
 
 下面初始化一些参数
@@ -472,7 +472,7 @@ gamma = bc_screen[2] / (zt*fragments[2].w);
 
 <img src="/img/perspectivecorrect.jpg" style="width:100px;">
 
-实际上到这里，关于 z 值的插值仍然有问题，设点 $P(x,y,z,1)$ 经过 MVP 变换后为 $P'(x',y',z',1)$；则：其中 $z'=(\frac{2(n+f)}{n-f}-\frac{n+f}2)-\frac{2nf}{n-f}\cdot\frac{1}{z}$，因此 $z'$ 的值关于 $-\frac{1}{z}$ 成正比，所以可以使用上述代码中的 -zt 作为新的 z 值更新 zbuffer。
+实际上到这里，关于 z 值的插值仍然有问题，设点 $P(x,y,z,1)$ 经过 MVP 变换后为 $P'(x',y',z',1)$；则：其中 $z'=\frac{(n+f)}{n-f}-\frac{2nf}{n-f}\cdot\frac{1}{z}$，因此 $z'$ 的值关于 $-\frac{1}{z}$ 成正比，所以可以使用上述代码中的 -zt 作为新的 z 值更新 zbuffer。
 
 另外，表现一个物体的材质只用纹理是完全不够的，高光的程度是另一个表现手段，如金属的表面往往更像镜面，同一方向的反射光往往更多，而人皮肤的表面往往更粗糙，镜面反射的光应该更少。
 
