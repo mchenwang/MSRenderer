@@ -14,12 +14,10 @@ int main() {
     for(int i=W*H; i>=0; --i) zbuffer[i] = -z_far-1;
     for(int i=W*H; i>=0; --i) shadow_map[i] = -std::numeric_limits<double>::max();
 
-    // std::vector<std::string> model_paths = {"../obj/floor.obj"};
-    // std::vector<std::string> model_paths = {"../obj/floor.obj","../obj/african_head/african_head.obj"};
-    std::vector<std::string> model_paths = {"../obj/african_head/african_head.obj","../obj/floor.obj"};
-    // std::vector<std::string> model_paths = {"../obj/african_head/african_head.obj"};
-    // std::vector<MSRender::Light> lights = {MSRender::Light(eye_pos, 10)};
-    std::vector<MSRender::Light> lights = {MSRender::Light(MSRender::pointd(2,3,1,1), 10)};
+    std::vector<std::string> model_paths = {"../obj/african_head/african_head.obj",
+                                            "../obj/african_head/african_head_eye_inner.obj",
+                                            "../obj/floor.obj"};
+    std::vector<MSRender::Light> lights = {MSRender::Light(MSRender::pointd(2,3,2,1), 20)};
     MSRender::VertexShader* vertex_shader = new MSRender::VertexShader();
     MSRender::PixelShader* pixel_shader = new MSRender::PhongShader(lights);
     std::vector<MSRender::Model> models;

@@ -5,7 +5,7 @@
 constexpr int H = 1200;
 constexpr int W = 1200;
 
-const MSRender::pointd eye_pos(3, 3, 3, 1);
+const MSRender::pointd eye_pos(1, 1, 3, 1);
 const MSRender::pointd center(0, 0, 0, 1);
 const MSRender::vecd eye_up_dir(0, 1, 0, 0);
 constexpr double amb_light_intensity = 15.;
