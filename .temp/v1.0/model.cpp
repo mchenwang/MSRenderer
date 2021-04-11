@@ -5,7 +5,7 @@
 
 using namespace MSRender;
 
-bool Model::nm_is_in_tangent = true;
+bool Model::nm_is_in_tangent = false;
 
 Model::Model(const std::string filename) {
     std::ifstream in;
@@ -103,6 +103,9 @@ Vector3d Model::get_normal_with_map(const double uv0, const double uv1) const {
 }
 TGAColor Model::get_diffuse(const double uv0, const double uv1) const {
     return diffusemap_.get(uv0*diffusemap_.get_width(), uv1*diffusemap_.get_height());
+}
+void Model::set_diffuse(const double uv0, const double uv1) {
+    return diffusemap_.set(uv0*diffusemap_.get_width(), uv1*diffusemap_.get_height(), get_diffuse(uv0, uv1)*0.3);
 }
 double Model::get_specular(const double uv0, const double uv1) const {
     return specularmap_.get(uv0*specularmap_.get_width(), uv1*specularmap_.get_height())[0];

@@ -1,21 +1,5 @@
 cmake_minimum_required (VERSION 3.18)
-project (renderer)
-
-set(HEADERS
-    header/tgaimage.h
-    header/global.h
-    header/algebra.h
-    header/model.h
-    header/shader.h
-    header/rasterization.h
-)
-set(SOURCES
-    src/main.cpp
-    src/tgaimage.cpp
-    src/model.cpp
-    src/shader.cpp
-    src/rasterization.cpp
-)
+project (rendering)
 
 include(CheckCXXCompilerFlag)
 
@@ -35,8 +19,11 @@ enable_cxx_compiler_flag_if_supported("-Wextra")
 enable_cxx_compiler_flag_if_supported("-pedantic")
 enable_cxx_compiler_flag_if_supported("-std=c++17")
 enable_cxx_compiler_flag_if_supported("-O3")
-# enable_cxx_compiler_flag_if_supported("-fopenmp")
+enable_cxx_compiler_flag_if_supported("-fopenmp")
 
-include_directories(${CMAKE_CURRENT_LIST_DIR}/header)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_LIST_DIR}/include)
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+file(GLOB SOURCES *.h *.cpp)
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+

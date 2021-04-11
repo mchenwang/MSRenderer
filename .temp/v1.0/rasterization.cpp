@@ -103,10 +103,8 @@ void draw_zbuffer(double* zbuffer, TGAImage &image, TGAColor color) {
     for(int i = 0; i < image.get_width(); i++) {
         for(int j = 0; j < image.get_height(); j++) {
             double z=zbuffer[i+j*image.get_width()];
-            if(z > -1){
-                if(z > 0.7) image.set(i, j, color);
-                else if(z < -0.5) image.set(i, j, color*0.1);
-                else image.set(i, j, color*((z+0.5)*0.5));
+            if(z >= 0){
+                image.set(i, j, color*z);
             }
         }
     }
@@ -148,9 +146,9 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
     double x_min = std::min(fragments[0].screen_pos[0], std::min(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
     double y_max = std::max(fragments[0].screen_pos[1], std::max(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
     double y_min = std::min(fragments[0].screen_pos[1], std::min(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
-    x_max = std::ceil (x_max); x_max = std::min(x_max, (double)image.get_width());
+    x_max = std::ceil (x_max); x_max = std::min(x_max, (double)image.get_width()-1);
     x_min = std::floor(x_min); x_min = std::max(x_min, 0.);
-    y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height());
+    y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height()-1);
     y_min = std::floor(y_min); y_min = std::max(y_min, 0.);
 
     // Vector3d E1 = fragments[1].world_pos - fragments[0].world_pos;
@@ -219,6 +217,99 @@ void triangle_with_Phong(MSRender::Fragment* fragments, MSRender::Shader* shader
     }
 }
 
+void triangle_with_shadow(MSRender::Fragment* fragments, MSRender::Shader* shader, TGAImage& image, double* zbuffer, const Model& model, double* shadow_map, MSRender::Point3d& light_pos) {
+    double x_max = std::max(fragments[0].screen_pos[0], std::max(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
+    double x_min = std::min(fragments[0].screen_pos[0], std::min(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
+    double y_max = std::max(fragments[0].screen_pos[1], std::max(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
+    double y_min = std::min(fragments[0].screen_pos[1], std::min(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
+    x_max = std::ceil (x_max); x_max = std::min(x_max, (double)image.get_width()-1);
+    x_min = std::floor(x_min); x_min = std::max(x_min, 0.);
+    y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height()-1);
+    y_min = std::floor(y_min); y_min = std::max(y_min, 0.);
+    Point3i P;
+    for(P[0] = x_min; P[0] <= x_max; P[0]++) {
+        for(P[1] = y_min; P[1] <= y_max; P[1]++) {
+            Vector3d bc_screen  = barycentric(fragments[0].screen_pos, fragments[1].screen_pos, fragments[2].screen_pos, Point3d({P[0]+0.5, P[1]+0.5, 0.}));
+            if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+            
+            double zt = bc_screen[0] / fragments[0].w + bc_screen[1] / fragments[1].w + bc_screen[2] / fragments[2].w;
+            double z = -zt;
+            // 透视修正
+            bc_screen[0] = bc_screen[0] / (zt*fragments[0].w);
+            bc_screen[1] = bc_screen[1] / (zt*fragments[1].w);
+            bc_screen[2] = bc_screen[2] / (zt*fragments[2].w);
+            
+            Fragment fragment;
+            fragment.world_pos = fragments[0].world_pos*bc_screen[0] + fragments[1].world_pos*bc_screen[1] + fragments[2].world_pos*bc_screen[2];
+            
+            fragment.uv = fragments[0].uv*bc_screen[0] + fragments[1].uv*bc_screen[1] + fragments[2].uv*bc_screen[2];
+            
+            if(model.has_normal_map()){
+                fragment.normal = model.get_normal_with_map(fragment.uv[0],fragment.uv[1]).normalized();
+            }
+            else fragment.normal = (fragments[0].normal*bc_screen[0] + fragments[1].normal*bc_screen[1] + fragments[2].normal*bc_screen[2]).normalized();
+            
+            if(model.has_diffuse_map())
+                fragment.texture_color = model.get_diffuse(fragment.uv[0],fragment.uv[1]);
+            else fragment.texture_color = TGAColor(0, 0, 0);
+            if(model.has_specular_map())
+                fragment.specular = model.get_specular(fragment.uv[0], fragment.uv[1]);
+            else fragment.specular = 0.;
+
+            // fragment.world_pos[2] = z;
+
+            if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
+                zbuffer[P[0]+P[1]*image.get_width()] = z;
+                Eigen::Vector4d temp = light_space_matrix * Eigen::Vector4d(fragment.world_pos[0], fragment.world_pos[1], fragment.world_pos[2], 1);
+                double sx = (temp[0]/temp[3]+1)*0.5*image.get_width();
+                double sy = (temp[1]/temp[3]+1)*0.5*image.get_height();
+                double sz = (temp[2]/temp[3]+1)*0.5;
+                double bias = std::max(0.005, 0.05 * (1.0 - fragment.normal * ((light_pos - Point3d({0.,0.,0.})).normalized())));
+                
+                // if(size_t(sx+sy*image.get_width())>=1440000){
+                //     std::cout<<bc_screen[0]<<" "<<bc_screen[1]<<" "<<bc_screen[2]<<"\n";
+                //     // std::cout<<fragments[1].world_pos[0]<<" "<<fragments[1].world_pos[1]<<" "<<fragments[1].world_pos[2]<<"\n";
+                //     // std::cout<<fragment.world_pos[0]<<" "<<fragment.world_pos[1]<<" "<<fragment.world_pos[2]<<"\n\n";
+                // }
+
+                // if(shadow_map[size_t(sx+sy*image.get_width())] - bias > sz)
+                //     image.set(P[0], P[1], shader->shading(fragment, 1));
+                // else 
+                image.set(P[0], P[1], shader->shading(fragment, 1));
+            }
+        }
+    }
+}
+
+void get_shadow_zbuffer(MSRender::Fragment* fragments, TGAImage& image, double* shadow_map) {
+    double x_max = std::max(fragments[0].screen_pos[0], std::max(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
+    double x_min = std::min(fragments[0].screen_pos[0], std::min(fragments[1].screen_pos[0], fragments[2].screen_pos[0]));
+    double y_max = std::max(fragments[0].screen_pos[1], std::max(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
+    double y_min = std::min(fragments[0].screen_pos[1], std::min(fragments[1].screen_pos[1], fragments[2].screen_pos[1]));
+    x_max = std::ceil (x_max); x_max = std::min(x_max, (double)image.get_width()-1);
+    x_min = std::floor(x_min); x_min = std::max(x_min, 0.);
+    y_max = std::ceil (y_max); y_max = std::min(y_max, (double)image.get_height()-1);
+    y_min = std::floor(y_min); y_min = std::max(y_min, 0.);
+    Point3i P;
+    for(P[0] = x_min; P[0] <= x_max; P[0]++) {
+        for(P[1] = y_min; P[1] <= y_max; P[1]++) {
+            Vector3d bc_screen  = barycentric(fragments[0].screen_pos, fragments[1].screen_pos, fragments[2].screen_pos, Point3d({P[0]+0.5, P[1]+0.5, 0.}));
+            if (bc_screen[0]<0 || bc_screen[1]<0 || bc_screen[2]<0) continue;
+            Point3d fragment = fragments[0].world_pos*bc_screen[0] + fragments[1].world_pos*bc_screen[1] + fragments[2].world_pos*bc_screen[2];
+            Eigen::Vector4d temp = light_space_matrix * Eigen::Vector4d(fragment[0], fragment[1], fragment[2], 1);
+            // double sx = (temp[0]/temp[3]+1)*image.get_width()*0.5;
+            // double sy = (temp[1]/temp[3]+1)*image.get_height()*0.5;
+            // double z = (temp[2]/temp[3]+1)*0.5;
+            double z = temp[2]/temp[3];
+            // if(z>-1&&z<-0.5) std::cout<<z<<" ";
+            z = (z+1)*0.5;
+            if (shadow_map[P[0]+P[1]*image.get_width()] < z) {
+                shadow_map[P[0]+P[1]*image.get_width()] = z;
+            }
+        }
+    }
+}
+
 constexpr double PI = 3.141592653;
 Eigen::Matrix4d model_transf(const double* scale, const double* thetas, const Vector3d& translate) {
     Eigen::Matrix4d Scale;
@@ -233,26 +324,26 @@ Eigen::Matrix4d model_transf(const double* scale, const double* thetas, const Ve
     double siny = 1. - cosy * cosy;
     double cosz = std::cos(thetas[2]*PI/180.);
     double sinz = 1. - cosz * cosz;
-    // Eigen::Matrix4d RotateX;
-    // RotateX << 1., 0., 0., 0.,
-    //            0., cosx, -sinx, 0.,
-    //            0., sinx, cosx, 0.,
-    //            0., 0., 0., 1.;
-    // Eigen::Matrix4d RotateY;
-    // RotateY << cosy, 0., siny, 0.,
-    //            0., 1., 0., 0.,
-    //            -siny, 0., cosy, 0.,
-    //            0., 0., 0., 1.;
-    // Eigen::Matrix4d RotateZ;
-    // RotateZ << cosz, -sinz, 0., 0.,
-    //            sinz, cosz, 0., 0.,
-    //            0., 0., 1., 0.,
-    //            0., 0., 0., 1.;
-    // Rotate = RotateX * RotateY * RotateZ;
-    Rotate << cosy*cosz, -cosy*sinz, siny, 0.,
-              sinx*siny*cosz+cosx*sinz, -sinx*siny*sinz+cosx*cosz, -sinx*cosy, 0.,
-              -cosx*siny*cosz+sinx*sinz, cosx*siny*sinz+sinx*cosz, cosx*cosy, 0.,
-              0., 0., 0., 1.;
+    Eigen::Matrix4d RotateX;
+    RotateX << 1., 0., 0., 0.,
+               0., cosx, -sinx, 0.,
+               0., sinx, cosx, 0.,
+               0., 0., 0., 1.;
+    Eigen::Matrix4d RotateY;
+    RotateY << cosy, 0., siny, 0.,
+               0., 1., 0., 0.,
+               -siny, 0., cosy, 0.,
+               0., 0., 0., 1.;
+    Eigen::Matrix4d RotateZ;
+    RotateZ << cosz, -sinz, 0., 0.,
+               sinz, cosz, 0., 0.,
+               0., 0., 1., 0.,
+               0., 0., 0., 1.;
+    Rotate = RotateX * RotateY * RotateZ;
+    // Rotate << cosy*cosz, -cosy*sinz, siny, 0.,
+    //           sinx*siny*cosz+cosx*sinz, -sinx*siny*sinz+cosx*cosz, -sinx*cosy, 0.,
+    //           -cosx*siny*cosz+sinx*sinz, cosx*siny*sinz+sinx*cosz, cosx*cosy, 0.,
+    //           0., 0., 0., 1.;
     Eigen::Matrix4d Translate;
     Translate << 1., 0., 0., translate[0],
                  0., 1., 0., translate[1],
@@ -286,25 +377,53 @@ Eigen::Matrix4d view_transf(const Point3d& eye, const Vector3d& eye_up_dir, cons
 }
 
 Eigen::Matrix4d projection_transf(double eye_fov, double aspect_ratio, double z_near, double z_far) {
-    double n = z_near, f = z_far;
+    double n = std::abs(z_near), f = z_near - z_far;
     double t = -n * std::tan(eye_fov * 0.5 * PI/ 180);
     double b = -t;
     double r = t * aspect_ratio;
     double l = -r;
+    Eigen::Matrix4d projection;
+    projection << 2*n/(r-l), 0, (l+r)/(l-r), 0,
+                  0, 2*n/(t-b), (t+b)/(b-t), 0,
+                  0, 0, (n)/(n-f), n*f/(f-n),
+                  0, 0, 1, 0;
+    return projection;
+    // Eigen::Matrix4d scale;
+    // scale << 2./(r-l), 0., 0., 0.,
+    //          0., 2./(t-b), 0., 0.,
+    //          0., 0., 2./(n-f), 0.,
+    //          0., 0., 0., 1.;
+    // Eigen::Matrix4d translate;
+    // translate << 1., 0., 0., -(l+r)*0.5,
+    //              0., 1., 0., -(t+b)*0.5,
+    //              0., 0., 1., -(f+n)*0.5,
+    //              0., 0., 0., 1.;
+    // Eigen::Matrix4d persp_to_ortho;
+    // persp_to_ortho << n, 0., 0., 0.,
+    //                   0., n, 0., 0.,
+    //                   0., 0., (n+f), -n*f,
+    //                   0., 0., 1., 0.;
+    // auto xs = scale * translate * persp_to_ortho;
+    // for(int i=0;i<4;i++){
+    //     for(int j=0;j<4;j++) std::cout<<xs(i,j)<<" ";
+    //     std::cout<<"\n";
+    // }
+    // return scale * translate * persp_to_ortho;
+}
+
+Eigen::Matrix4d ortho_proj_transf(double r, double t, double n) {
+    double b = -t;
+    double l = -r;
+    double f = -n;
     Eigen::Matrix4d translate;
     translate << 1., 0., 0., -(l+r)*0.5,
                  0., 1., 0., -(t+b)*0.5,
-                 0., 0., 1., -(f+n)*0.5,
+                 0., 0., 1., -f,
                  0., 0., 0., 1.;
     Eigen::Matrix4d scale;
     scale << 2./(r-l), 0., 0., 0.,
              0., 2./(t-b), 0., 0.,
-             0., 0., 2./(n-f), 0.,
+             0., 0., 1./(n-f), 0.,
              0., 0., 0., 1.;
-    Eigen::Matrix4d persp_to_ortho;
-    persp_to_ortho << n, 0., 0., 0.,
-                      0., n, 0., 0.,
-                      0., 0., (n+f), -n*f,
-                      0., 0., 1., 0.;
-    return translate * scale * persp_to_ortho;
+    return scale * translate;
 }
