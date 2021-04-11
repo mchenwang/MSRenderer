@@ -112,7 +112,7 @@ private:
 
 > 值得一提的是，模型中的一个顶点可能属于多个三角形，而在不同三角形中的 uv 坐标和法向是不同，因此需要分开存储；而我在设计之初，是将顶点坐标、uv 坐标和法向封装成了一个 Vertex 类，导致后续加入贴图后，出现了问题，可见下图：
 >
-> <img src="/img/texturebug.png" style="width:200px;" />
+> <img src="/img/texturebug.png"  height="240px" width="240px" />
 
 模型从 obj 文件以及相应的 tga 文件中导入，具体实现可见源码。
 
@@ -160,11 +160,11 @@ image.write_tga_file("output.tga");
 
 得到：
 
-<img src="/img/triangle.jpg" style="width:200px;" />
+<img src="/img/triangle.jpg"  height="240px" width="240px" />
 
 仔细观察，可以发现三角形的边界并不平滑，有走样现象：
 
-<img src="/img/aliasing.png" style="width:200px;">
+<img src="/img/aliasing.png"  height="240px" width="240px">
 
 可以采用 MSAA 的方法来减轻走样现象：
 
@@ -187,7 +187,7 @@ for (P[0]=bboxmin[0]; P[0]<=bboxmax[0]; P[0]++) {
 
 得到结果：
 
-<img src="/img/triangleMSAA.jpg" style="width:200px;" /><img src="/img/anti-aliasingMSAA.png" style="width:200px;">
+<img src="/img/triangleMSAA.jpg"  height="240px" width="240px" /><img src="/img/anti-aliasingMSAA.png"  height="240px" width="240px">
 
 除了使用叉积判断像素在不在三角形内外，还可以使用重心坐标的方法，如果一个点的重心坐标 $(1-u-v,u, v)$ 都不小于 0，则该点在三角形内。
 实际上，根据重心坐标定义，可以列出如下线性方程组，从而解出重心坐标：
@@ -250,7 +250,7 @@ if(intensity > 0) triangle(screen_coords, image, color*intensity);
 
 结果如下：
 
-<img src="/img/face1.jpg" style="width:200px;" />
+<img src="/img/face1.jpg"  height="240px" width="240px" />
 
 这里不难发现，模型嘴部等几个地方出现了异样，因为上述做法是对三角形顺序遍历，逐一绘制，而当三角形的顺序不是按照画家算法的顺序存储，或者三角形存在交叉的情况时，就会出现错误的覆盖现象。
 
@@ -269,11 +269,11 @@ if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
 
 结果如下：
 
-<img src="/img/facez-buffer.jpg" style="width:200px;" />
+<img src="/img/facez-buffer.jpg"  height="240px" width="240px" />
 
 将 z-buffer 可视化绘制一下：
 
-<img src="/img/z-buffer.jpg" style="width:200px;" />
+<img src="/img/z-buffer.jpg"  height="240px" width="240px" />
 
 当然，重心坐标插值还可以做更多的事情，比如加入纹理，利用 uv 坐标插值，找到像素点在纹理贴图中的颜色，只要对之前的代码稍加修改，向函数中传入纹理贴图即可，uv 坐标的插值与 z 的插值相同：
 
@@ -295,7 +295,7 @@ if (zbuffer[P[0]+P[1]*image.get_width()] < z) {
 
 结果如下：
 
-<img src="/img/texture.jpg" style="width:200px;" />
+<img src="/img/texture.jpg"  height="240px" width="240px" />
 
 ### Step 4 变换观察视角
 
@@ -415,11 +415,11 @@ world_coords[j] = Point3d({temp[0]/temp[3], temp[1]/temp[3], temp[2]/temp[3]});
 
 下面看看结果：
 
-<img src="/img/mvp.jpg" style="width:200px;" />
+<img src="/img/mvp.jpg"  height="240px" width="240px" />
 
 试着修改一些参数，比如绕 z 轴旋转 90°：
 
-<img src="/img/mvp2.jpg" style="width:200px;" />
+<img src="/img/mvp2.jpg"  height="240px" width="240px" />
 
 ### Step 5 光照模型
 
@@ -455,11 +455,11 @@ ld = kd * light.intensity / r2 * (fragment.normal * light_dir.normalized());
 
 最后结果为三个部分的累加，颜色即为结果再乘 255 将数据映射到颜色范围中。可看到结果如下：
 
-<img src="/img/BPhong.jpg" style="width:100px;"><img src="/img/BPhong2.jpg" style="width:100px;">
+<img src="/img/BPhong.jpg"  height="240px" width="240px"><img src="/img/BPhong2.jpg"  height="240px" width="240px">
 
 另外，我们增加一个地板试试看：
 
-<img src="/img/perspectiveerror.jpg" style="width:100px;">
+<img src="/img/perspectiveerror.jpg"  height="240px" width="240px">
 
 这里似乎出现了问题，地板上的纹理并不合理，这里是因为在设置纹理时，我们使用屏幕空间的坐标对点及其属性进行插值，而根据第四步中得到的 MVP 变换后的点坐标在 x 和 y 轴坐标上是有线性关系的，而在 z 轴上是对 1/z 有线性关系，因此进行线性插值时，会出现错误，因此需要矫正：透视矫正。根据公式：
 
@@ -472,7 +472,7 @@ gamma = bc_screen[2] / (zt*fragments[2].w);
 
 结果如下：
 
-<img src="/img/perspectivecorrect.jpg" style="width:100px;">
+<img src="/img/perspectivecorrect.jpg"  height="240px" width="240px">
 
 实际上到这里，关于 z 值的插值仍然有问题，设点 $P(x,y,z,1)$ 经过 MVP 变换后为 $P'(x',y',z',1)$；则：其中 $z'=\frac{(n+f)}{n-f}-\frac{2nf}{n-f}\cdot\frac{1}{z}$，因此 $z'$ 的值关于 $-\frac{1}{z}$ 成正比，所以可以使用上述代码中的 -zt 作为新的 z 值更新 zbuffer。
 
@@ -482,7 +482,7 @@ gamma = bc_screen[2] / (zt*fragments[2].w);
 
 给地板一个全白的高光贴图，结果如下，p = 32，p = 128：
 
-<img src="/img/spec.png" style="width:100px;"><img src="/img/spec2.png" style="width:100px;">
+<img src="/img/spec.png"  height="240px" width="240px"><img src="/img/spec2.png" height="240px" width="240px">
 
 ### Step 6 法线贴图
 
@@ -490,7 +490,7 @@ gamma = bc_screen[2] / (zt*fragments[2].w);
 
 而法线贴图有两种，第一种是看起来比较花的图片，即每个像素点的 RGB 值代表着对应点的法线向量，可以直接替换原本的法线，得到结果如下：
 
-<img src="/img/nm.jpg" style="width:200px;">
+<img src="/img/nm.jpg" height="240px" width="240px">
 
 另一种贴图看起来偏蓝紫色，每个像素点记录了切线空间的法线扰动，需要计算从切线空间转换到世界空间下的转换矩阵，即 TBN：
 
@@ -517,11 +517,11 @@ vecd B = ((E2 * du1 - E1 * du2) / temp).normalized();
 
 得出 shadow map 的 z-buffer 可视化：
 
-<img src="/img/shadowzbuffer.jpg" style="width:200px;">
+<img src="/img/shadowzbuffer.jpg"  height="240px" width="240px">
 
 结果：
 
-<img src="/img/shadowe.jpg" style="width:200px;">
+<img src="/img/shadowe.jpg"  height="240px" width="240px">
 
 这里有很多波纹状的东西，是自遮挡造成的，需要在判断时增加一个容忍度：
 
@@ -531,7 +531,7 @@ double bias = std::max(0.005, 0.05 * (1.0 - f.normal * (light.pos - f.world_pos)
 
 然后比较 `shadow_map[sx + sy * W] - bias` 与 `f.light_space_pos.z` 的大小即可：
 
-<img src="/img/shadow.jpg" style="width:200px;">
+<img src="/img/shadow.jpg"  height="240px" width="240px">
 
 到此，基本任务全部完成。
 
