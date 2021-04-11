@@ -11,7 +11,7 @@ cd SoftwareRendering
 mkdir build
 cd build
 cmake -G "MinGW Makefiles" ..
-mingw32-make && rendering.exe && start output.tga
+mingw32-make && renderer.exe && start output.tga
 ```
 
 - Windows 系统下查看 tga 格式的图片可使用软件 [IrfanView](https://www.irfanview.com/)
@@ -492,11 +492,49 @@ gamma = bc_screen[2] / (zt*fragments[2].w);
 
 <img src="/img/nm.jpg" style="width:200px;">
 
-TODO: 切线空间的法线贴图
+另一种贴图看起来偏蓝紫色，每个像素点记录了切线空间的法线扰动，需要计算从切线空间转换到世界空间下的转换矩阵，即 TBN：
+
+```c++
+vecd E1    = tri[1].world_pos - tri[0].world_pos;
+vecd E2    = tri[2].world_pos - tri[0].world_pos;
+double du1 = tri[1].uv.u - tri[0].uv.u;
+double dv1 = tri[1].uv.v - tri[0].uv.v;
+double du2 = tri[2].uv.u - tri[0].uv.u;
+double dv2 = tri[2].uv.v - tri[0].uv.v;
+double temp = dv2 * du1 - dv1 * du2;
+vecd T = ((E1 * dv2 - E2 * dv1) / temp).normalized();
+vecd B = ((E2 * du1 - E1 * du2) / temp).normalized();
+```
+
+而 N 轴即为原本法线方向。
+
+### Step 7 硬阴影
+
+实现硬阴影的原理很简单：
+
+1. 从光的角度记录光能照到的位置（将光当作相机，光栅化记录 z-buffer）
+2. 从相机的角度再次光栅化，将像素点转换到光空间下，与第一步记录的 z 值比较，如果该像素点 z 较小，则在阴影中。
+
+得出 shadow map 的 z-buffer 可视化：
+
+<img src="/img/shadowzbuffer.jpg" style="width:200px;">
+
+结果：
+
+<img src="/img/shadowe.jpg" style="width:200px;">
+
+这里有很多波纹状的东西，是自遮挡造成的，需要在判断时增加一个容忍度：
+
+```c++
+double bias = std::max(0.005, 0.05 * (1.0 - f.normal * (light.pos - f.world_pos).normalized()));
+```
+
+然后比较 `shadow_map[sx + sy * W] - bias` 与 `f.light_space_pos.z` 的大小即可：
+
+<img src="/img/shadow.jpg" style="width:200px;">
+
+到此，基本任务全部完成。
 
 
 
-## TODO
-
-- shadow
-- restructure - ing
+> 2021/4/11 完成重构，原始版本保留在 .temp 文件夹中
