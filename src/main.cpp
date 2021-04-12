@@ -14,14 +14,20 @@ int main() {
     for(int i=W*H; i>=0; --i) zbuffer[i] = -z_far-1;
     for(int i=W*H; i>=0; --i) shadow_map[i] = -std::numeric_limits<double>::max();
 
-    std::vector<std::string> model_paths = {"../obj/african_head/african_head.obj",
-                                            "../obj/african_head/african_head_eye_inner.obj",
+    // std::vector<std::string> model_paths = {"../obj/floor.obj"};
+    // std::vector<std::string> model_paths = {"../obj/african_head/african_head.obj",
+    //                                         "../obj/african_head/african_head_eye_inner.obj",
+    //                                         "../obj/floor.obj"};
+    std::vector<std::string> model_paths = {"../obj/diablo3_pose/diablo3_pose.obj",
                                             "../obj/floor.obj"};
-    std::vector<MSRender::Light> lights = {MSRender::Light(MSRender::pointd(2,3,2,1), 20)};
+    std::vector<MSRender::Light> lights = {MSRender::Light(MSRender::pointd(0,1,3,1), 10)};
     MSRender::VertexShader* vertex_shader = new MSRender::VertexShader();
     MSRender::PixelShader* pixel_shader = new MSRender::PhongShader(lights);
     std::vector<MSRender::Model> models;
     std::vector<MSRender::ModelTransfParam> modelTPs(model_paths.size());
+
+    modelTPs[0].thetas[1] = 120.;
+
     std::vector<MSRender::Triangle> triangles;
     std::vector<int> model_index;
 

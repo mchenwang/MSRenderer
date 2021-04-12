@@ -46,6 +46,9 @@ inline std::pair<vecd, vecd> getTB(Triangle& tri, bool flag) {
 void MSRender::rasterize(Triangle& tri, TGAImage& image, const Model& model, const PixelShader* shader, double* zbuffer, Light& light, double* shadow_map) {
     auto [max_x, min_x, max_y, min_y] = get_bbox(tri[0].screen_pos, tri[1].screen_pos, tri[2].screen_pos);
 
+    // std::cout<<tri[0].screen_pos<<"\n"
+    //          <<tri[1].screen_pos<<"\n"
+    //          <<tri[2].screen_pos<<"\n";
     auto [T, B] = getTB(tri, model.has_normal_map() && Model::nm_is_in_tangent);
 
     for(int x = min_x; x <= max_x; x++) {

@@ -32,11 +32,11 @@ namespace MSRender {
         TGAColor color;
         Light(pointd pos_, double intensity_)
         : pos(pos_), intensity(intensity_), color(TGAColor(255, 255, 255)) {
-            set_light_space_matrix(center, eye_up_dir, 3);
+            set_light_space_matrix(center, eye_up_dir, shadow_map_size);
         }
         Light(pointd pos_, double intensity_, TGAColor c)
         : pos(pos_), intensity(intensity_), color(c) {
-            set_light_space_matrix(center, eye_up_dir, 3);
+            set_light_space_matrix(center, eye_up_dir, shadow_map_size);
         }
 
         mat4d light_space_matrix;

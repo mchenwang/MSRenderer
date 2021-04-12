@@ -53,10 +53,14 @@ namespace MSRender{
         bool has_specular_map() const { return has_specularmap; }
 
         mat4d model_matrix;
+        // 模型变换的逆矩阵的转置
+        mat4d normal_matrix;
         static bool nm_is_in_tangent;
 
         void set_model_matrix(const ModelTransfParam&);
+        void set_normal_matrix();
         pointd model_transf(pointd&& p) const;
+        vecd model_nm_transf(vecd&& nm) const;
     };
 }
 

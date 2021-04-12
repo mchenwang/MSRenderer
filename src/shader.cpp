@@ -83,7 +83,7 @@ Vertex VertexShader::shading(const Model& model, const size_t iface, const size_
     // 透视纠正使用距离的关系，w 需要表示距离，为正数
     ret.w = std::abs(temp.w);
     ret.uv = model.get_uv(iface, nthvert);
-    ret.normal = model.get_normal(iface, nthvert);
+    ret.normal =model.model_nm_transf(model.get_normal(iface, nthvert));
     if(!model.has_diffuse_map()) ret.texture = pointd(255, 255, 255) * 0.5;
     if(!model.has_specular_map()) ret.specular = 0;
     return ret;

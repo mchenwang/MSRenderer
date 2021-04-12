@@ -20,11 +20,11 @@ namespace MSRender {
         }
 
         T operator[](size_t i) const {
-            if(i > 1) std::cerr << "vec access error\n";
+            if(i > 1) std::cerr << i << " uv access error\n";
             return i == 0 ? u : v;
         }
         T& operator[](size_t i) {
-            if(i > 3) std::cerr << "vec access error\n";
+            if(i > 3) std::cerr << i << " uv access error\n";
             return i == 0 ? u : v;
         }
 
@@ -76,14 +76,15 @@ namespace MSRender {
         }
 
         T operator[](const size_t i) const {
-            if(i > 3) std::cerr << "vec access error\n";
+            if(i > 3) std::cerr << i << " vec access error\n";
             if(i == 0) return x;
             if(i == 1) return y;
             if(i == 2) return z;
             return w;
         }
         T& operator[](const size_t i) {
-            if(i > 3) std::cerr << "vec access error\n";
+
+            if(i > 3) std::cerr << i << " vec access error\n";
             if(i == 0) return x;
             if(i == 1) return y;
             if(i == 2) return z;
@@ -94,7 +95,7 @@ namespace MSRender {
             return vec<4, T>(x*c, y*c, z*c, w*c);
         }
         vec<4, T>& operator*=(double c) {
-            *this = (*this) * c;
+            x *= c, y *= c, z *= c, w *= c;
             return *this;
         }
         double operator*(const vec<4, T>& a) const {
@@ -111,7 +112,7 @@ namespace MSRender {
             return vec<4, T>(x/c, y/c, z/c, w/c);
         }
         vec<4, T>& operator/=(double c) {
-            for(size_t i = 0; i < 4; i++) (*this)[i] /= c;
+            x /= c, y /= c, z /= c, w /= c;
             return *this;
         }
 
@@ -184,6 +185,48 @@ namespace MSRender {
                 out << m[i] << "\n";
             }
             return out;
+        }
+
+        mat<4, 4, T> Transpose() {
+            mat<4, 4, T> ret;
+            for(int i = 0; i < 4; i++) ret[i] = (*this).column(i);
+            return ret;
+        }
+
+        mat<4, 4, double> inverse() {
+            int row[4], col[4];
+            int piv[4] = { 0, 0, 0, 0 };
+            mat<4, 4, double> ret = (*this);
+            for(int i = 0, r = 0, c = 0; i < 4; ++i) {
+                double big = 0;
+                for(int j = 0; j < 4; ++j) if(piv[j] != 1) {
+                    for(int k = 0; k < 4; ++k) if(piv[k] != 1) {
+                        if(double f = std::abs(ret[j][k]); f > big) r = j, c = k, big = f;
+                    }
+                }
+                if(std::abs(ret[r][c]) < 1e-10) {
+                    std::cerr << "matrix inverse error\n";
+                    return *this;
+                }
+                if(r != c) std::swap(ret[r], ret[c]);
+                ++piv[c], row[i] = r, col[i] = c;
+                ret[c] /= ret[c][c];
+                ret[c][c] = 1;
+                for(int j = 0; j < 4; ++j) {
+                    if(j != c) {
+                        double f = ret[j][c];
+                        ret[j][c] = 0;
+                        for(int k = 0; k < 4; ++k) ret[j][k] -= ret[c][k] * f;
+                    }
+                }
+            }
+            for(int i = 3; i >= 0; --i) {
+                if(row[i] != col[i]) {
+                    for(int j = 0; j < 4; ++j)
+                        std::swap(ret[j][row[i]], ret[j][col[i]]);
+                }
+            }
+            return ret;
         }
     };
     using mat4d = mat<4, 4, double>;

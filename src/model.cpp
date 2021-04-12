@@ -143,23 +143,48 @@ void Model::set_model_matrix(const ModelTransfParam& param) {
     Scale[2][2] = param.scale[2];
     Scale[3][3] = 1;
     double cosx = std::cos(param.thetas[0]*PI/180.);
-    double sinx = 1. - cosx * cosx;
+    double sinx = std::sin(param.thetas[0]*PI/180.);
     double cosy = std::cos(param.thetas[1]*PI/180.);
-    double siny = 1. - cosy * cosy;
+    double siny = std::sin(param.thetas[1]*PI/180.);
     double cosz = std::cos(param.thetas[2]*PI/180.);
-    double sinz = 1. - cosz * cosz;
+    double sinz = std::sin(param.thetas[2]*PI/180.);
     mat4d Rotate;
     Rotate[0] = vecd(cosy*cosz, -cosy*sinz, siny, 0);
     Rotate[1] = vecd(sinx*siny*cosz+cosx*sinz, -sinx*siny*sinz+cosx*cosz, -sinx*cosy, 0);
     Rotate[2] = vecd(-cosx*siny*cosz+sinx*sinz, cosx*siny*sinz+sinx*cosz, cosx*cosy, 0);
     Rotate[3][3] = 1;
+    // mat4d RotateX;
+    // RotateX[0][0] = 1, RotateX[3][3] = 1;
+    // RotateX[1][1] = cosx, RotateX[1][2] = -sinx;
+    // RotateX[2][1] = sinx, RotateX[2][2] = cosx;
+    // mat4d RotateY;
+    // RotateY[1][1] = 1, RotateY[3][3] = 1;
+    // RotateY[0][0] = cosy, RotateY[0][2] = siny;
+    // RotateY[2][0] = -siny, RotateY[2][2] = cosy;
+    // mat4d RotateZ;
+    // RotateZ[2][2] = 1, RotateZ[3][3] = 1;
+    // RotateZ[0][0] = cosz, RotateZ[0][1] = -sinz;
+    // RotateZ[1][0] = sinz, RotateZ[1][1] = cosz;
+    // Rotate = RotateX * RotateY * RotateZ;
+    // std::cout<<Rotate;
     mat4d Translate(true);
     Translate[0][3] = param.translate[0];
     Translate[1][3] = param.translate[1];
     Translate[2][3] = param.translate[2];
     model_matrix = Translate * Rotate * Scale;
+
+    set_normal_matrix();
+    // model_matrix = Scale * Rotate * Translate;
+}
+
+void Model::set_normal_matrix() {
+    normal_matrix = model_matrix.inverse().Transpose();
 }
 
 pointd Model::model_transf(pointd&& p) const {
     return model_matrix * p;
+}
+
+vecd Model::model_nm_transf(vecd&& nm) const {
+    return (normal_matrix * nm).normalized();
 }
