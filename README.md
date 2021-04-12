@@ -311,11 +311,11 @@ Scale << scale[0], 0., 0., 0.,
          0., 0., 0., 1.;
 Eigen::Matrix4d Rotate;
 double cosx = std::cos(thetas[0]*PI/180.);
-double sinx = 1. - cosx * cosx;
+double sinx = std::sin(thetas[0]*PI/180.);
 double cosy = std::cos(thetas[1]*PI/180.);
-double siny = 1. - cosy * cosy;
+double siny = std::sin(thetas[1]*PI/180.);
 double cosz = std::cos(thetas[2]*PI/180.);
-double sinz = 1. - cosz * cosz;
+double sinz = std::sin(thetas[2]*PI/180.);
 Eigen::Matrix4d RotateX; // 绕 x 轴旋转
 RotateX << 1., 0., 0., 0.,
            0., cosx, -sinx, 0.,
