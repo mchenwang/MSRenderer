@@ -27,6 +27,8 @@ namespace MSRender{
         TGAImage normalmap_;          // normal map texture
         bool has_specularmap;
         TGAImage specularmap_;        // specular map texture
+        bool has_glowmap;
+        TGAImage glowmap_;            // glow map texture
         bool load_texture(const std::string filename, const std::string suffix, TGAImage &img);
     public:
         Model() {}
@@ -37,9 +39,10 @@ namespace MSRender{
         pointd get_vertex(const size_t iface, const size_t nthvert) const;
         uvd get_uv(const size_t iface, const size_t nthvert) const;
         vecd get_diffuse(const uvd &uv) const;
+        vecd get_glow(const uvd &uv) const;
         double get_specular(const uvd &uv) const;
         vecd get_diffuse(const double uv0, const double uv1) const;
-        // void set_diffuse(const double uv0, const double uv1) ;
+        vecd get_glow(const double uv0, const double uv1) const;
         double get_specular(const double uv0, const double uv1) const;
         vecd get_normal_with_map(const uvd &uv) const; // fetch the normal vector from the normal map texture
         vecd get_normal_with_map(const double uv0, const double uv1) const;
@@ -47,10 +50,12 @@ namespace MSRender{
         const TGAImage& get_diffusemap() const;
         const TGAImage& get_normalmap() const;
         const TGAImage& get_specularmap() const;
+        const TGAImage& get_glowmap() const;
 
         bool has_diffuse_map() const { return has_diffusemap; }
         bool has_normal_map() const { return has_normalmap; }
         bool has_specular_map() const { return has_specularmap; }
+        bool has_glow_map() const { return has_glowmap; }
 
         mat4d model_matrix;
         // 模型变换的逆矩阵的转置

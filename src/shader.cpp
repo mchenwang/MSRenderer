@@ -10,6 +10,7 @@ TGAColor PhongShader::shading(const Fragment& fragment, double shadow) const {
 
     vecd kd(fragment.texture[0]/255., fragment.texture[1]/255., fragment.texture[2]/255.);
     double ks = fragment.specular/255.;
+    result += fragment.glow*amb_light_intensity;
 
     for(auto& light: lights) {
         vecd light_dir = light.pos - fragment.world_pos;
@@ -24,7 +25,6 @@ TGAColor PhongShader::shading(const Fragment& fragment, double shadow) const {
 
         result += (ld + ls)*255.;
     }
-    
     return TGAColor((std::uint8_t) std::min(255., result[0]*shadow),
                     (std::uint8_t) std::min(255., result[1]*shadow),
                     (std::uint8_t) std::min(255., result[2]*shadow));

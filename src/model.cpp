@@ -55,9 +55,10 @@ Model::Model(const std::string filename) {
         }
     }
     in.close();
-    has_diffusemap = load_texture(filename, "_diffuse.tga",    diffusemap_);
+    has_diffusemap = load_texture(filename, "_diffuse.tga", diffusemap_);
     has_normalmap = load_texture(filename, (Model::nm_is_in_tangent? "_nm_tangent.tga":"_nm.tga"), normalmap_);
-    has_specularmap = load_texture(filename, "_spec.tga",       specularmap_);
+    has_specularmap = load_texture(filename, "_spec.tga", specularmap_);
+    has_glowmap = load_texture(filename, "_glow.tga", glowmap_);
 }
 
 size_t Model::vertexs_size() const {
@@ -97,6 +98,10 @@ vecd Model::get_diffuse(const uvd &uv) const {
 double Model::get_specular(const uvd &uv) const {
     return specularmap_.get(uv.u*specularmap_.get_width(), uv.v*specularmap_.get_height())[0];
 }
+vecd Model::get_glow(const uvd &uv) const {
+    TGAColor c = glowmap_.get(uv.u*glowmap_.get_width(), uv.v*glowmap_.get_height());
+    return vecd(c[2], c[1], c[0]);
+}
 
 vecd Model::get_normal_with_map(const double uv0, const double uv1) const {
     TGAColor c = normalmap_.get(uv0*normalmap_.get_width(), uv1*normalmap_.get_height());
@@ -105,13 +110,14 @@ vecd Model::get_normal_with_map(const double uv0, const double uv1) const {
         res[2-i] = (c[i] * 2. / 255.) - 1;
     return res;
 }
+vecd Model::get_glow(const double uv0, const double uv1) const {
+    TGAColor c = glowmap_.get(uv0*glowmap_.get_width(), uv1*glowmap_.get_height());
+    return vecd(c[2], c[1], c[0]);
+}
 vecd Model::get_diffuse(const double uv0, const double uv1) const {
     TGAColor c = diffusemap_.get(uv0*diffusemap_.get_width(), uv1*diffusemap_.get_height());
     return vecd(c[2], c[1], c[0]);
 }
-// void Model::set_diffuse(const double uv0, const double uv1) {
-//     return diffusemap_.set(uv0*diffusemap_.get_width(), uv1*diffusemap_.get_height(), get_diffuse(uv0, uv1)*0.3);
-// }
 double Model::get_specular(const double uv0, const double uv1) const {
     return specularmap_.get(uv0*specularmap_.get_width(), uv1*specularmap_.get_height())[0];
 }
@@ -134,6 +140,9 @@ const TGAImage& Model::get_normalmap() const {
 }
 const TGAImage& Model::get_specularmap() const {
     return specularmap_;
+}
+const TGAImage& Model::get_glowmap() const {
+    return glowmap_;
 }
 
 void Model::set_model_matrix(const ModelTransfParam& param) {

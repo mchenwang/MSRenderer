@@ -21,13 +21,13 @@ int main() {
     std::vector<std::string> model_paths = {"../obj/diablo3_pose/diablo3_pose.obj",
                                             "../obj/floor.obj"};
     // std::vector<std::string> model_paths = {"../obj/Elf01_Stand.obj"};
-    std::vector<MSRender::Light> lights = {MSRender::Light(MSRender::pointd(0,3,2,1), 10)};
+    std::vector<MSRender::Light> lights = {MSRender::Light(MSRender::pointd(0,2.6,2,1), 14)};
     MSRender::VertexShader* vertex_shader = new MSRender::VertexShader();
     MSRender::PixelShader* pixel_shader = new MSRender::PhongShader(lights);
     std::vector<MSRender::Model> models;
     std::vector<MSRender::ModelTransfParam> modelTPs(model_paths.size());
 
-    modelTPs[0].thetas[1] = -180.;
+    // modelTPs[0].thetas[1] = -180.;
 
     std::vector<MSRender::Triangle> triangles;
     std::vector<int> model_index;

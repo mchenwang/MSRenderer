@@ -79,7 +79,10 @@ void MSRender::rasterize(Triangle& tri, TGAImage& image, const Model& model, con
                 if(model.has_specular_map())
                     f.specular = model.get_specular(f.uv);
                 else f.specular = interpolation(tri[0].specular, tri[1].specular, tri[2].specular, bc_screen);
-                
+                if(model.has_glow_map())
+                    f.glow = model.get_glow(f.uv);
+                else f.glow = vecd(0, 0, 0);
+
                 if(model.has_normal_map()) {
                     if(Model::nm_is_in_tangent){
                         vecd N = f.normal;

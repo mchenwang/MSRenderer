@@ -16,6 +16,7 @@ namespace MSRender {
         vecd normal;
         uvd uv;
         pointd texture;
+        pointd glow;
         double specular; // 黑白只有一个值
     };
     using Fragment = Vertex;
