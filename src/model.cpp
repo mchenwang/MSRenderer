@@ -172,7 +172,6 @@ void Model::set_model_matrix(const ModelTransfParam& param) {
     Translate[1][3] = param.translate[1];
     Translate[2][3] = param.translate[2];
     model_matrix = Translate * Rotate * Scale;
-
     set_normal_matrix();
     // model_matrix = Scale * Rotate * Translate;
 }

@@ -194,39 +194,29 @@ namespace MSRender {
         }
 
         mat<4, 4, double> inverse() {
-            int row[4], col[4];
-            int piv[4] = { 0, 0, 0, 0 };
-            mat<4, 4, double> ret = (*this);
-            for(int i = 0, r = 0, c = 0; i < 4; ++i) {
-                double big = 0;
-                for(int j = 0; j < 4; ++j) if(piv[j] != 1) {
-                    for(int k = 0; k < 4; ++k) if(piv[k] != 1) {
-                        if(double f = std::abs(ret[j][k]); f > big) r = j, c = k, big = f;
-                    }
+            mat<4, 4, double> a = (*this);
+            mat<4, 4, double> b(true);
+            for(int i = 0; i < 4; i++) {
+                int main_r = i;
+                for(int j = 0; j < 4; j++) {
+                    if(std::abs(a[j][i]) > std::abs(a[main_r][i]))
+                        main_r = j;
                 }
-                if(std::abs(ret[r][c]) < 1e-10) {
-                    std::cerr << "matrix inverse error\n";
-                    return *this;
+                if(a[main_r][i] == 0) {
+                    std::cerr << "mat cannot inverse.\n";
+                    return (*this);
                 }
-                if(r != c) std::swap(ret[r], ret[c]);
-                ++piv[c], row[i] = r, col[i] = c;
-                ret[c] /= ret[c][c];
-                ret[c][c] = 1;
-                for(int j = 0; j < 4; ++j) {
-                    if(j != c) {
-                        double f = ret[j][c];
-                        ret[j][c] = 0;
-                        for(int k = 0; k < 4; ++k) ret[j][k] -= ret[c][k] * f;
+                if(main_r != i) std::swap(a[main_r], a[i]), std::swap(b[main_r], b[i]);
+                for(int k = 0; k < 4; k++) if(k != i) {
+                    double p = a[k][i] / a[i][i];
+                    for(int j = 0; j < 4; j++) {
+                        a[k][j] -= p*a[i][j];
+                        b[k][j] -= p*b[i][j];
                     }
                 }
             }
-            for(int i = 3; i >= 0; --i) {
-                if(row[i] != col[i]) {
-                    for(int j = 0; j < 4; ++j)
-                        std::swap(ret[j][row[i]], ret[j][col[i]]);
-                }
-            }
-            return ret;
+            for(int i = 0; i < 4; i++) b[i]/=a[i][i];
+            return b;
         }
     };
     using mat4d = mat<4, 4, double>;
