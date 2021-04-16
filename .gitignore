@@ -1,7 +1,6 @@
 build/
 test.*
 .vscode
-include/Eigen/
-obj/
 temp.*
 .temp/
+wiki/
