@@ -1,5 +1,12 @@
 # SoftwareRendering 说明
- 模仿 [tinyrendering](https://github.com/ssloy/tinyrenderer/wiki/Lesson-0:-getting-started) 实现一个简单的软渲染器。
+一个简单的软渲染器。
+
+重要的公式推导过程记录在[这里](https://github.com/miawua/SoftwareRendering/wiki)。
+
+参考：
+
+-  [tinyrendering](https://github.com/ssloy/tinyrenderer/wiki/Lesson-0:-getting-started) 
+- GAMES 101
 
 ## 运行
 
