@@ -1,20 +1,22 @@
 # SoftwareRendering 说明
 一个简单的软渲染器。
 
-重要的公式推导过程记录在[这里](https://github.com/miawua/SoftwareRendering/wiki)。
+重要的公式推导过程记录在[这里](https://github.com/miawua/MSRenderer/wiki)。
 
 参考：
 
 -  [tinyrendering](https://github.com/ssloy/tinyrenderer/wiki/Lesson-0:-getting-started) 
 - GAMES 101
 
+>  2021/4/11 完成重构，原始版本保留在 .temp 文件夹中
+
 ## 运行
 
 - Win10 + MinGW
 
 ```sh
-git clone https://github.com/miawua/SoftwareRendering.git
-cd SoftwareRendering
+git clone https://github.com/miawua/MSRenderer.git
+cd MSRenderer
 mkdir build
 cd build
 cmake -G "MinGW Makefiles" ..
@@ -541,7 +543,3 @@ double bias = std::max(0.005, 0.05 * (1.0 - f.normal * (light.pos - f.world_pos)
 <img src="/img/shadow.jpg"  height="240px" width="240px">
 
 到此，基本任务全部完成。
-
-
-
-> 2021/4/11 完成重构，原始版本保留在 .temp 文件夹中
