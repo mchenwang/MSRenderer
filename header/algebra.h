@@ -20,11 +20,11 @@ namespace MSRender {
         }
 
         T operator[](size_t i) const {
-            if(i > 1) std::cerr << i << " uv access error\n";
+            if(i > 1 || i < 0) std::cerr << i << " uv access error\n";
             return i == 0 ? u : v;
         }
         T& operator[](size_t i) {
-            if(i > 3) std::cerr << i << " uv access error\n";
+            if(i > 1 || i < 0) std::cerr << i << " uv access error\n";
             return i == 0 ? u : v;
         }
 
@@ -76,15 +76,14 @@ namespace MSRender {
         }
 
         T operator[](const size_t i) const {
-            if(i > 3) std::cerr << i << " vec access error\n";
+            if(i > 3 || i < 0) std::cerr << i << " vec access error\n";
             if(i == 0) return x;
             if(i == 1) return y;
             if(i == 2) return z;
             return w;
         }
         T& operator[](const size_t i) {
-
-            if(i > 3) std::cerr << i << " vec access error\n";
+            if(i > 3 || i < 0) std::cerr << i << " vec access error\n";
             if(i == 0) return x;
             if(i == 1) return y;
             if(i == 2) return z;
